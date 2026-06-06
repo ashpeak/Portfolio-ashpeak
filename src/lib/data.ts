@@ -16,32 +16,7 @@ export const personalInfo = {
 
 export const roles = ['Full-Stack Developer', 'Solo Builder', 'Product Engineer', 'Open Source Contributor']
 
-export const skills = [
-  { name: 'TypeScript', category: 'Languages' },
-  { name: 'JavaScript', category: 'Languages' },
-  { name: 'Java', category: 'Languages' },
-  { name: 'React', category: 'Frontend' },
-  { name: 'Next.js', category: 'Frontend' },
-  { name: 'Tailwind CSS', category: 'Frontend' },
-  { name: 'shadcn/ui', category: 'Frontend' },
-  { name: 'Vite', category: 'Frontend' },
-  { name: 'Node.js', category: 'Backend' },
-  { name: 'Express.js', category: 'Backend' },
-  { name: 'Hono', category: 'Backend' },
-  { name: 'Bun', category: 'Backend' },
-  { name: 'PostgreSQL', category: 'Database' },
-  { name: 'MongoDB', category: 'Database' },
-  { name: 'MySQL', category: 'Database' },
-  { name: 'Redis', category: 'Database' },
-  { name: 'Drizzle ORM', category: 'Tools' },
-  { name: 'Prisma', category: 'Tools' },
-  { name: 'Zustand', category: 'Frontend' },
-  { name: 'Socket.io', category: 'Backend' },
-  { name: 'Vertex AI', category: 'Tools' },
-  { name: 'Gemini', category: 'Tools' },
-  { name: 'Docker', category: 'Tools' },
-  { name: 'Git', category: 'Tools' },
-]
+
 
 export const experience = [
   {
