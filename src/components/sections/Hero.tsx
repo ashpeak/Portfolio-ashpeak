@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from 'motion/react'
 import { personalInfo, roles } from '@/lib/data'
 import { Button } from '@/components/ui/Button'
 import { FadeUp } from '@/components/motion/FadeUp'
+import { MagneticWrap } from '@/components/motion/MagneticWrap'
+import { TextScramble } from '@/components/motion/TextScramble'
+import { FloatingParticles } from '@/components/motion/FloatingParticles'
 import { Mail } from 'lucide-react'
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
@@ -31,6 +34,9 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-[100svh] flex flex-col justify-center items-center px-6 pt-20">
+      {/* Floating particles background */}
+      <FloatingParticles />
+
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
         <div className="w-[800px] h-[600px] bg-[var(--accent-glow)] rounded-full blur-[100px] opacity-30" />
       </div>
@@ -44,13 +50,17 @@ export default function Hero() {
           </div>
         </FadeUp>
 
+        {/* Name with text scramble effect */}
         <div className="font-display font-bold leading-none tracking-[-0.03em] mb-6">
           <FadeUp delay={0.72}>
-            <h1 className="text-display md:text-[120px]">Ashish</h1>
+            <h1 className="text-display md:text-[120px]">
+              <TextScramble text="Ashish" delay={1.0} speed={25} />
+            </h1>
           </FadeUp>
           <FadeUp delay={0.84}>
             <h1 className="text-display md:text-[120px]">
-              Singh<span className="text-[var(--accent)]">.</span>
+              <TextScramble text="Singh" delay={1.2} speed={25} />
+              <span className="text-[var(--accent)]">.</span>
             </h1>
           </FadeUp>
         </div>
@@ -59,10 +69,10 @@ export default function Hero() {
           <AnimatePresence mode="wait">
             <motion.span
               key={roleIndex}
-              initial={{ y: 24, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -24, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              initial={{ y: 24, opacity: 0, filter: 'blur(8px)' }}
+              animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+              exit={{ y: -24, opacity: 0, filter: 'blur(8px)' }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-h3 md:text-h2 font-display text-white/90"
             >
               {roles[roleIndex]}
@@ -76,26 +86,54 @@ export default function Hero() {
           </p>
         </FadeUp>
 
+        {/* Magnetic buttons */}
         <FadeUp delay={1.2}>
           <div className="flex items-center gap-4 mb-12">
-            <a href="#projects"><Button variant="primary">View Projects</Button></a>
-            <a href={personalInfo.resume} target="_blank"><Button variant="ghost">Resume ↗</Button></a>
+            <MagneticWrap strength={0.2}>
+              <a href="#projects"><Button variant="primary">View Projects</Button></a>
+            </MagneticWrap>
+            <MagneticWrap strength={0.2}>
+              <a href={personalInfo.resume} target="_blank"><Button variant="ghost">Resume ↗</Button></a>
+            </MagneticWrap>
           </div>
         </FadeUp>
 
+        {/* Magnetic social links */}
         <FadeUp delay={1.3}>
           <div className="flex items-center gap-6">
-            <a href={personalInfo.github} target="_blank" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
-              <GithubIcon size={20} /> <span className="text-sm font-medium">GitHub</span>
-            </a>
-            <a href={personalInfo.linkedin} target="_blank" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
-              <LinkedinIcon size={20} /> <span className="text-sm font-medium">LinkedIn</span>
-            </a>
-            <a href={`mailto:${personalInfo.email}`} className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
-              <Mail size={20} /> <span className="text-sm font-medium">Email</span>
-            </a>
+            <MagneticWrap strength={0.4}>
+              <a href={personalInfo.github} target="_blank" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                <GithubIcon size={20} /> <span className="text-sm font-medium">GitHub</span>
+              </a>
+            </MagneticWrap>
+            <MagneticWrap strength={0.4}>
+              <a href={personalInfo.linkedin} target="_blank" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                <LinkedinIcon size={20} /> <span className="text-sm font-medium">LinkedIn</span>
+              </a>
+            </MagneticWrap>
+            <MagneticWrap strength={0.4}>
+              <a href={`mailto:${personalInfo.email}`} className="text-white/60 hover:text-white transition-colors flex items-center gap-2">
+                <Mail size={20} /> <span className="text-sm font-medium">Email</span>
+              </a>
+            </MagneticWrap>
           </div>
         </FadeUp>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+        >
+          <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">Scroll</span>
+          <motion.div
+            className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent"
+            animate={{ scaleY: [0, 1, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ transformOrigin: 'top' }}
+          />
+        </motion.div>
 
       </div>
     </section>

@@ -6,9 +6,9 @@ import { skills, skillCategories } from '@/lib/data/skills'
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('All')
-  const sectionRef  = useRef<HTMLDivElement>(null)
-  const overlayRef  = useRef<HTMLDivElement>(null)
-  const leaveTimer  = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const filtered = activeCategory === 'All'
     ? skills
@@ -20,19 +20,19 @@ export default function Skills() {
   ) => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current)
 
-    const overlay  = overlayRef.current
-    const section  = sectionRef.current
+    const overlay = overlayRef.current
+    const section = sectionRef.current
     if (!overlay || !section) return
 
     // Card center relative to the SECTION (not the viewport)
-    const cardRect    = e.currentTarget.getBoundingClientRect()
+    const cardRect = e.currentTarget.getBoundingClientRect()
     const sectionRect = section.getBoundingClientRect()
-    const cx = cardRect.left - sectionRect.left + cardRect.width  / 2
-    const cy = cardRect.top  - sectionRect.top  + cardRect.height / 2
+    const cx = cardRect.left - sectionRect.left + cardRect.width / 2
+    const cy = cardRect.top - sectionRect.top + cardRect.height / 2
 
     // Extract the 3 colors from the blend string (now simple hex/css colors)
     const colors = colorBlend.split(',').map(c => c.trim())
-    
+
     // Apply a linear gradient from left to right, centered on the card
     const size = 600; // Width of the gradient spread
     overlay.style.backgroundImage =
@@ -50,6 +50,13 @@ export default function Skills() {
 
     overlay.style.maskSize = `100% 100%, 28px 28px`
     overlay.style.webkitMaskSize = `100% 100%, 28px 28px`
+
+    // Dynamically align the 28px dot mask with the global body dot grid
+    // by offsetting it based on the section's exact position in the document.
+    const offsetX = -(section.offsetLeft % 28)
+    const offsetY = -(section.offsetTop % 28)
+    overlay.style.maskPosition = `0 0, ${offsetX}px ${offsetY}px`
+    overlay.style.webkitMaskPosition = `0 0, ${offsetX}px ${offsetY}px`
 
     overlay.style.maskRepeat = `no-repeat, repeat`
     overlay.style.webkitMaskRepeat = `no-repeat, repeat`
@@ -72,10 +79,10 @@ export default function Skills() {
       ref={sectionRef}
       id="skills"
       style={{
-        position:   'relative',
+        position: 'relative',
         background: '#080808',   // ← solid cover: kills body dot misalignment
-        overflow:   'hidden',
-        padding:    '96px 0',
+        overflow: 'hidden',
+        padding: '96px 0',
       }}
     >
       {/*
@@ -86,12 +93,12 @@ export default function Skills() {
         ref={overlayRef}
         aria-hidden="true"
         style={{
-          position:          'absolute',
-          inset:             0,
-          opacity:           0,
-          transition:        'opacity 450ms ease',
-          pointerEvents:     'none',
-          zIndex:            0,
+          position: 'absolute',
+          inset: 0,
+          opacity: 0,
+          transition: 'opacity 450ms ease',
+          pointerEvents: 'none',
+          zIndex: 0,
         }}
       />
 
@@ -115,15 +122,15 @@ export default function Skills() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               style={{
-                padding:      '5px 14px',
+                padding: '5px 14px',
                 borderRadius: '8px',
-                fontSize:     '12px',
-                fontFamily:   'monospace',
-                cursor:       'pointer',
-                border:       activeCategory === cat ? '1px solid #c8ff00' : '1px solid #1e1e1e',
-                background:   activeCategory === cat ? 'rgba(200,255,0,0.07)' : 'transparent',
-                color:        activeCategory === cat ? '#c8ff00' : '#555',
-                transition:   'all 200ms',
+                fontSize: '12px',
+                fontFamily: 'monospace',
+                cursor: 'pointer',
+                border: activeCategory === cat ? '1px solid #c8ff00' : '1px solid #1e1e1e',
+                background: activeCategory === cat ? 'rgba(200,255,0,0.07)' : 'transparent',
+                color: activeCategory === cat ? '#c8ff00' : '#555',
+                transition: 'all 200ms',
               }}
             >
               {cat}
@@ -135,9 +142,9 @@ export default function Skills() {
         <motion.div
           layout
           style={{
-            display:             'grid',
+            display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))',
-            gap:                 '10px',
+            gap: '10px',
           }}
         >
           <AnimatePresence mode="popLayout">
@@ -153,17 +160,17 @@ export default function Skills() {
                 onMouseEnter={(e) => handleEnter(e, skill.colorBlend)}
                 onMouseLeave={handleLeave}
                 style={{
-                  width:          '96px',
-                  height:         '96px',
-                  background:     '#0f0f0f',
-                  border:         '1px solid #1e1e1e',
-                  borderRadius:   '14px',
-                  display:        'flex',
-                  flexDirection:  'column',
-                  alignItems:     'center',
+                  width: '96px',
+                  height: '96px',
+                  background: '#0f0f0f',
+                  border: '1px solid #1e1e1e',
+                  borderRadius: '14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  gap:            '8px',
-                  cursor:         'default',
+                  gap: '8px',
+                  cursor: 'default',
                 }}
               >
                 <img

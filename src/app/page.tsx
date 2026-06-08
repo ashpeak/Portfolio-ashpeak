@@ -4,14 +4,17 @@ import Skills from "@/components/sections/Skills"
 import Experience from "@/components/sections/Experience"
 import Projects from "@/components/sections/Projects"
 import Contact from "@/components/sections/Contact"
+import { Marquee } from "@/components/motion/Marquee"
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <Marquee />
       <About />
       <Skills />
       <Experience />
+      <Marquee />
       <Projects />
       <Contact />
     </main>

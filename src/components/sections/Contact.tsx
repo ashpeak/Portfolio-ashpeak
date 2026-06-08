@@ -4,6 +4,8 @@ import { SectionLabel } from '../ui/SectionLabel'
 import { SectionTitle } from '../ui/SectionTitle'
 import { personalInfo } from '@/lib/data'
 import { Mail, Send } from 'lucide-react'
+import { MagneticWrap } from '../motion/MagneticWrap'
+import { motion } from 'motion/react'
 
 const LinkedinIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -35,45 +37,81 @@ export default function Contact() {
 
         <div className="flex flex-col gap-4">
           <FadeUp delay={0.1}>
-            <a href={`mailto:${personalInfo.email}`} className="block group">
-              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] group-hover:border-[var(--accent)] group-hover:bg-[var(--bg-elevated)] transition-all duration-300 flex items-center gap-6">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:text-black transition-colors">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-lg">Email</h4>
-                  <p className="text-white/60 font-mono text-sm">{personalInfo.email}</p>
-                </div>
-              </div>
-            </a>
+            <MagneticWrap strength={0.12}>
+              <a href={`mailto:${personalInfo.email}`} className="block group">
+                <motion.div
+                  className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] group-hover:border-[var(--accent)] group-hover:bg-[var(--bg-elevated)] transition-all duration-300 flex items-center gap-6"
+                  whileHover={{ x: 6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:text-black transition-colors">
+                    <Mail size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-display font-bold text-lg">Email</h4>
+                    <p className="text-white/60 font-mono text-sm">{personalInfo.email}</p>
+                  </div>
+                  <motion.span
+                    className="text-white/20 group-hover:text-[var(--accent)] transition-colors text-xl"
+                    whileHover={{ x: 4 }}
+                  >
+                    →
+                  </motion.span>
+                </motion.div>
+              </a>
+            </MagneticWrap>
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <a href={personalInfo.linkedin} target="_blank" className="block group">
-              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] group-hover:border-[var(--accent)] group-hover:bg-[var(--bg-elevated)] transition-all duration-300 flex items-center gap-6">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#0A66C2] transition-colors">
-                  <LinkedinIcon size={24} className="group-hover:text-white" />
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-lg">LinkedIn</h4>
-                  <p className="text-white/60 font-mono text-sm">/ashpeak</p>
-                </div>
-              </div>
-            </a>
+            <MagneticWrap strength={0.12}>
+              <a href={personalInfo.linkedin} target="_blank" className="block group">
+                <motion.div
+                  className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] group-hover:border-[#0A66C2] group-hover:bg-[var(--bg-elevated)] transition-all duration-300 flex items-center gap-6"
+                  whileHover={{ x: 6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#0A66C2] transition-colors">
+                    <LinkedinIcon size={24} className="group-hover:text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-display font-bold text-lg">LinkedIn</h4>
+                    <p className="text-white/60 font-mono text-sm">/ashpeak</p>
+                  </div>
+                  <motion.span
+                    className="text-white/20 group-hover:text-[#0A66C2] transition-colors text-xl"
+                    whileHover={{ x: 4 }}
+                  >
+                    →
+                  </motion.span>
+                </motion.div>
+              </a>
+            </MagneticWrap>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <a href={personalInfo.telegram} target="_blank" className="block group">
-              <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] group-hover:border-[var(--accent)] group-hover:bg-[var(--bg-elevated)] transition-all duration-300 flex items-center gap-6">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#2AABEE] transition-colors">
-                  <Send size={24} className="group-hover:text-white" />
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-lg">Telegram</h4>
-                  <p className="text-white/60 font-mono text-sm">@AshishDogo</p>
-                </div>
-              </div>
-            </a>
+            <MagneticWrap strength={0.12}>
+              <a href={personalInfo.telegram} target="_blank" className="block group">
+                <motion.div
+                  className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] group-hover:border-[#2AABEE] group-hover:bg-[var(--bg-elevated)] transition-all duration-300 flex items-center gap-6"
+                  whileHover={{ x: 6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#2AABEE] transition-colors">
+                    <Send size={24} className="group-hover:text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-display font-bold text-lg">Telegram</h4>
+                    <p className="text-white/60 font-mono text-sm">@AshishDogo</p>
+                  </div>
+                  <motion.span
+                    className="text-white/20 group-hover:text-[#2AABEE] transition-colors text-xl"
+                    whileHover={{ x: 4 }}
+                  >
+                    →
+                  </motion.span>
+                </motion.div>
+              </a>
+            </MagneticWrap>
           </FadeUp>
         </div>
       </div>

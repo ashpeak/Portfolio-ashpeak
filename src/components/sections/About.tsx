@@ -6,7 +6,8 @@ import { SectionTitle } from '../ui/SectionTitle'
 import { BentoCard } from '../ui/BentoCard'
 import { personalInfo } from '@/lib/data'
 import { FadeUp } from '../motion/FadeUp'
-import { MapPin, ArrowRight } from 'lucide-react'
+import { CountUp } from '../motion/CountUp'
+import { MapPin, ArrowRight, Code2, Coffee, GitBranch } from 'lucide-react'
 
 export default function About() {
   const bentoContainer = {
@@ -61,11 +62,47 @@ export default function About() {
           </BentoCard>
         </motion.div>
 
-        {/* Card F: Vibe / Music */}
-        <motion.div variants={bentoItem}>
-          <BentoCard className="h-full flex flex-col justify-center p-8">
-            <h4 className="font-display font-bold text-lg mb-2">Vibe Check</h4>
-            <p className="text-white/60 text-sm">Codes best with music playing 🎵</p>
+        {/* Card: Stats with animated counters */}
+        <motion.div variants={bentoItem} className="lg:col-span-3">
+          <BentoCard className="p-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Code2 size={18} className="text-[var(--accent)]" />
+                </div>
+                <div className="text-3xl md:text-4xl font-display font-bold text-white">
+                  <CountUp end={3} suffix="+" />
+                </div>
+                <p className="text-white/40 text-sm font-mono mt-1">Years Coding</p>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <GitBranch size={18} className="text-[var(--accent)]" />
+                </div>
+                <div className="text-3xl md:text-4xl font-display font-bold text-white">
+                  <CountUp end={20} suffix="+" />
+                </div>
+                <p className="text-white/40 text-sm font-mono mt-1">Projects Built</p>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Coffee size={18} className="text-[var(--accent)]" />
+                </div>
+                <div className="text-3xl md:text-4xl font-display font-bold text-white">
+                  <CountUp end={1000} suffix="+" />
+                </div>
+                <p className="text-white/40 text-sm font-mono mt-1">Coffees Consumed</p>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-[var(--accent)] text-lg">⚡</span>
+                </div>
+                <div className="text-3xl md:text-4xl font-display font-bold text-white">
+                  <CountUp end={500} suffix="+" />
+                </div>
+                <p className="text-white/40 text-sm font-mono mt-1">Commits</p>
+              </div>
+            </div>
           </BentoCard>
         </motion.div>
 

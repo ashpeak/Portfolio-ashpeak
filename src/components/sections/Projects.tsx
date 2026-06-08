@@ -41,14 +41,27 @@ export default function Projects() {
             <BentoCard className="h-full group flex flex-col cursor-pointer">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="font-display font-bold text-xl">{project.name}</h3>
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:text-black transition-colors">
+                <motion.div
+                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:text-black transition-colors"
+                  whileHover={{ rotate: 45 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
                   <ArrowUpRight size={16} />
-                </div>
+                </motion.div>
               </div>
               <p className="text-white/60 mb-6 flex-1">{project.desc}</p>
               <div className="flex flex-wrap gap-2 mt-auto">
-                {project.stack.map(tech => (
-                  <span key={tech} className="text-xs font-mono text-white/40">[{tech}]</span>
+                {project.stack.map((tech, j) => (
+                  <motion.span
+                    key={tech}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + j * 0.05 }}
+                    className="text-xs font-mono text-white/40 hover:text-[var(--accent)] transition-colors cursor-default"
+                  >
+                    [{tech}]
+                  </motion.span>
                 ))}
               </div>
             </BentoCard>
