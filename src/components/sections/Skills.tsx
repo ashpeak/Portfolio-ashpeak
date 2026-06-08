@@ -80,7 +80,7 @@ export default function Skills() {
       id="skills"
       style={{
         position: 'relative',
-        background: '#080808',   // ← solid cover: kills body dot misalignment
+        background: 'transparent',
         overflow: 'hidden',
         padding: '96px 0',
       }}
