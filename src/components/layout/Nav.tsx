@@ -6,10 +6,10 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#home' },
+  { name: 'About', href: '/#about' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 export default function Nav() {
@@ -21,7 +21,10 @@ export default function Nav() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
       
-      const sections = links.map(link => document.getElementById(link.href.substring(1)))
+      const sections = links.map(link => {
+        const id = link.href.split('#')[1]
+        return id ? document.getElementById(id) : null
+      })
       const scrollPosition = window.scrollY + 100
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -49,7 +52,7 @@ export default function Nav() {
         )}
       >
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="#home" className="font-display font-bold text-2xl tracking-tighter">
+          <a href="/#home" className="font-display font-bold text-2xl tracking-tighter">
             ak<span className="text-[var(--accent)]">.</span>
           </a>
 

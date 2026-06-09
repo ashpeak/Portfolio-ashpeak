@@ -8,10 +8,10 @@ export default function Footer() {
           </div>
           
           <div className="flex gap-6 text-sm text-white/60">
-            <a href="#home" className="hover:text-white transition-colors">Home</a>
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+            <a href="/#home" className="hover:text-white transition-colors">Home</a>
+            <a href="/#about" className="hover:text-white transition-colors">About</a>
+            <a href="/#projects" className="hover:text-white transition-colors">Projects</a>
+            <a href="/#contact" className="hover:text-white transition-colors">Contact</a>
           </div>
 
           <div className="flex gap-6 text-sm text-white/60">

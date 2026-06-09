@@ -90,7 +90,7 @@ export default function Hero() {
         <FadeUp delay={1.2}>
           <div className="flex items-center gap-4 mb-12">
             <MagneticWrap strength={0.2}>
-              <a href="#projects"><Button variant="primary">View Projects</Button></a>
+              <a href="/#projects"><Button variant="primary">View Projects</Button></a>
             </MagneticWrap>
             <MagneticWrap strength={0.2}>
               <a href={personalInfo.resume} target="_blank"><Button variant="ghost">Resume ↗</Button></a>

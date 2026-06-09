@@ -14,7 +14,7 @@ export interface ProjectData {
   stack: string[]
   githubUrl?: string
   liveUrl?: string
-  heroImage: string
+  images: string[]
   overview: string
   keyFeatures: ProjectFeature[]
   architecture?: string
@@ -23,24 +23,27 @@ export interface ProjectData {
 
 export const projectsData: ProjectData[] = [
   {
-    slug: 'startupideadb',
-    name: 'startupideadb.com',
-    tagline: 'Startup ideas aggregation platform with AI enrichment',
-    date: '2024 - Present',
-    status: 'In Progress',
+    slug: 'braintube-main',
+    name: 'Braintube',
+    tagline: 'Empowering individuals with accessible, top-quality education.',
+    date: '2023',
+    status: 'Completed',
     category: 'Full-Stack',
-    role: 'Solo Builder — Architected and built the entire application from scratch, including database design, API development, AI integration, and frontend UI.',
-    stack: ['Next.js', 'Hono', 'PostgreSQL', 'Vertex AI', 'Drizzle ORM'],
-    liveUrl: '#',
-    heroImage: '/projects/startupideadb.webp',
-    overview: 'startupideadb.com is a comprehensive aggregator for startup ideas. It scrapes, organizes, and enriches startup ideas from various sources using AI to provide actionable insights for founders looking for their next big thing.',
-    keyFeatures: [
-      { title: 'AI Enrichment', description: 'Uses Vertex AI to automatically categorize and evaluate incoming startup ideas based on market viability.' },
-      { title: 'High-Performance API', description: 'Built with Hono on the edge for blazing fast response times.' },
-      { title: 'Advanced Filtering', description: 'Complex taxonomy allowing users to filter ideas by industry, business model, and required technical difficulty.' }
+    role: 'Full-Stack Developer',
+    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Nodemailer', 'Redis', 'Socket.io'],
+    githubUrl: 'https://github.com/ashpeak/Progify',
+    liveUrl: 'https://braintube.kubacreatives.in/',
+    images: [
+      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop'
     ],
-    architecture: 'The platform is split into a Next.js frontend hosted on Vercel, and a Hono backend deployed on Cloudflare Workers. It uses PostgreSQL with Drizzle ORM for data storage, and integrates directly with Google Cloud Vertex AI for background processing tasks.',
-    techDecisions: 'Chosen Hono over Express for edge compatibility and lower latency. Drizzle ORM was selected for its type safety and minimal overhead compared to Prisma.'
+    overview: 'Braintube offers free, expert-designed courses across various fields to empower individuals with accessible, top-quality education. Our mission is to make learning engaging, fun, and inclusive, fostering growth for beginners and professionals alike. Join us to enhance your future!',
+    keyFeatures: [
+      { title: 'Interactive Learning', description: 'Engaging, fun, and inclusive course material.' },
+      { title: 'Expert-Designed Courses', description: 'Free, top-quality education across various fields.' }
+    ],
+    architecture: 'Built entirely on the MERN stack (MongoDB, Express.js, React.js, Node.js). It utilizes Socket.io for real-time features and Redis for caching and fast data retrieval, along with Nodemailer for automated email communications.'
   },
   {
     slug: 'blink-ai',
@@ -53,7 +56,7 @@ export const projectsData: ProjectData[] = [
     stack: ['React', 'Node.js', 'FFmpeg', 'Gemini AI'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/blink-ai.webp',
+    images: ['/projects/blink-ai.webp'],
     overview: 'Blink.ai automates short-form video creation. Users input a topic or a script, and the system generates a voiceover, fetches relevant stock footage, and stitches it all together with animated captions using FFmpeg.',
     keyFeatures: [
       { title: 'Automated Scripting', description: 'Leverages Gemini AI to turn short prompts into engaging 60-second video scripts.' },
@@ -72,7 +75,7 @@ export const projectsData: ProjectData[] = [
     stack: ['Next.js', 'Node.js', 'MongoDB', 'Redis', 'Easebuzz'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/thefitsheets.webp',
+    images: ['/projects/thefitsheets.webp'],
     overview: 'A robust e-commerce platform built from the ground up to handle high volumes of traffic and secure transactions. It includes a custom admin dashboard for inventory and order management.',
     keyFeatures: [
       { title: 'Secure Checkout', description: 'Integrated with Easebuzz payment gateway for seamless and secure transactions.' },
@@ -91,7 +94,7 @@ export const projectsData: ProjectData[] = [
     stack: ['Next.js', 'Socket.io', 'Redis', 'Express'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/mingchat.webp',
+    images: ['/projects/mingchat.webp'],
     overview: 'MingChat is a highly responsive chat application supporting direct messages, group chats, read receipts, and typing indicators. Designed to mimic the fluid feel of native messaging apps.',
     keyFeatures: [
       { title: 'Real-time Messaging', description: 'Powered by Socket.io with a Redis adapter for multi-instance scaling.' },
@@ -110,7 +113,7 @@ export const projectsData: ProjectData[] = [
     stack: ['Vite', 'React', 'PostgreSQL', 'Drizzle'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/effitask.webp',
+    images: ['/projects/effitask.webp'],
     overview: 'A productivity tool that combines a traditional to-do list with a drag-and-drop calendar interface. Designed for people who want to time-block their tasks effectively.',
     keyFeatures: [
       { title: 'Drag & Drop', description: 'Fluid drag-and-drop interface for moving tasks onto specific calendar slots.' },
@@ -129,7 +132,7 @@ export const projectsData: ProjectData[] = [
     stack: ['React', 'Node.js', 'MongoDB', 'Express'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/braintube.webp',
+    images: ['/projects/braintube.webp'],
     overview: 'An educational platform focused on video-based learning with integrated interactive notes that sync to video timestamps.',
     keyFeatures: [
       { title: 'Timestamped Notes', description: 'Users can take notes that are directly linked to specific moments in the video player.' },
@@ -147,7 +150,7 @@ export const projectsData: ProjectData[] = [
     stack: ['Next.js', 'Web Crypto API', 'Supabase'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/whisper-vault.webp',
+    images: ['/projects/whisper-vault.webp'],
     overview: 'A secure way to share sensitive information like API keys or passwords. The secret is encrypted in the browser, and the server never sees the decryption key.',
     keyFeatures: [
       { title: 'E2E Encryption', description: 'Uses AES-GCM for encryption within the browser before the payload ever hits the network.' },
@@ -165,7 +168,7 @@ export const projectsData: ProjectData[] = [
     stack: ['React', 'TMDB API', 'Tailwind CSS'],
     githubUrl: '#',
     liveUrl: '#',
-    heroImage: '/projects/imdb-clone.webp',
+    images: ['/projects/imdb-clone.webp'],
     overview: 'A visual clone of IMDB built to master React state management and third-party API integration. Features comprehensive search, filtering, and detailed movie pages.',
     keyFeatures: [
       { title: 'Infinite Scroll', description: 'Seamlessly loads more movies as the user scrolls down the page.' },
