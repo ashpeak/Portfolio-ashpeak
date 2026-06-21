@@ -8,7 +8,7 @@ import { Chip } from '../ui/Chip'
 
 export default function Experience() {
   return (
-    <section className="py-24 md:py-32 px-6 max-w-4xl mx-auto">
+    <section className="py-12 md:py-20 px-6 max-w-4xl mx-auto">
       <SectionLabel>experience</SectionLabel>
       <SectionTitle>Where I&apos;ve Worked.</SectionTitle>
 

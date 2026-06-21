@@ -17,7 +17,7 @@ import { Button } from '../ui/Button'
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 max-w-6xl mx-auto">
+    <section id="contact" className="pt-12 pb-4 md:pt-20 md:pb-8 px-6 max-w-6xl mx-auto">
       <SectionLabel>contact</SectionLabel>
       <SectionTitle>Let&apos;s Work Together.</SectionTitle>
 

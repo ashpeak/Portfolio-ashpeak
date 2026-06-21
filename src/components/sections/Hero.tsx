@@ -43,7 +43,7 @@ export default function Hero() {
 
       <div className="max-w-3xl mx-auto w-full flex flex-col items-center text-center relative z-10">
         
-        <FadeUp delay={0.6}>
+        <FadeUp delay={0.2} animateOnMount={true}>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
             <span className="w-2 h-2 rounded-full bg-[var(--green-dot)] animate-pulse" />
             <span className="text-xs font-medium text-white/80">Available for opportunities</span>
@@ -52,20 +52,20 @@ export default function Hero() {
 
         {/* Name with text scramble effect */}
         <div className="font-display font-bold leading-none tracking-[-0.03em] mb-6">
-          <FadeUp delay={0.72}>
+          <FadeUp delay={0.3} animateOnMount={true}>
             <h1 className="text-display md:text-[120px]">
-              <TextScramble text="Ashish" delay={1.0} speed={25} />
+              <TextScramble text="Ashish" delay={0.5} speed={25} />
             </h1>
           </FadeUp>
-          <FadeUp delay={0.84}>
+          <FadeUp delay={0.4} animateOnMount={true}>
             <h1 className="text-display md:text-[120px]">
-              <TextScramble text="Singh" delay={1.2} speed={25} />
+              <TextScramble text="Singh" delay={0.6} speed={25} />
               <span className="text-[var(--accent)]">.</span>
             </h1>
           </FadeUp>
         </div>
 
-        <FadeUp delay={0.96} className="h-8 md:h-10 mb-6 flex items-center justify-center overflow-hidden">
+        <FadeUp delay={0.5} animateOnMount={true} className="h-8 md:h-10 mb-6 flex items-center justify-center overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.span
               key={roleIndex}
@@ -80,26 +80,26 @@ export default function Hero() {
           </AnimatePresence>
         </FadeUp>
 
-        <FadeUp delay={1.08}>
+        <FadeUp delay={0.6} animateOnMount={true}>
           <p className="text-lg md:text-xl text-white/60 max-w-lg mb-10 font-body">
             I build scalable web products end-to-end — from APIs to UIs.
           </p>
         </FadeUp>
 
         {/* Magnetic buttons */}
-        <FadeUp delay={1.2}>
+        <FadeUp delay={0.7} animateOnMount={true}>
           <div className="flex items-center gap-4 mb-12">
             <MagneticWrap strength={0.2}>
               <a href="/#projects"><Button variant="primary">View Projects</Button></a>
             </MagneticWrap>
             <MagneticWrap strength={0.2}>
-              <a href={personalInfo.resume} target="_blank"><Button variant="ghost">Resume ↗</Button></a>
+              <a href="/resume"><Button variant="ghost">Resume ↗</Button></a>
             </MagneticWrap>
           </div>
         </FadeUp>
 
         {/* Magnetic social links */}
-        <FadeUp delay={1.3}>
+        <FadeUp delay={0.8} animateOnMount={true}>
           <div className="flex items-center gap-6">
             <MagneticWrap strength={0.4}>
               <a href={personalInfo.github} target="_blank" className="text-white/60 hover:text-white transition-colors flex items-center gap-2">

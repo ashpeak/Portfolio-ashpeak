@@ -82,7 +82,7 @@ export default function Skills() {
         position: 'relative',
         background: 'transparent',
         overflow: 'hidden',
-        padding: '96px 0',
+        padding: '64px 0',
       }}
     >
       {/*

@@ -34,9 +34,12 @@ export const projectsData: ProjectData[] = [
     githubUrl: 'https://github.com/ashpeak/Progify',
     liveUrl: 'https://braintube.kubacreatives.in/',
     images: [
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop'
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036927/portfolio/braintube_irhyvt.webp',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036935/portfolio/Screenshot_21-6-2026_154251_braintube.kubacreatives.in_yk2hm7.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036932/portfolio/Screenshot_21-6-2026_154320_braintube.kubacreatives.in_nilyq7.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036928/portfolio/Screenshot_21-6-2026_154336_braintube.kubacreatives.in_yc0yi1.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036931/portfolio/Screenshot_21-6-2026_154459_braintube.kubacreatives.in_ycsoxg.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036929/portfolio/Screenshot_21-6-2026_154154_braintube.kubacreatives.in_lczrlz.jpg'
     ],
     overview: 'Braintube offers free, expert-designed courses across various fields to empower individuals with accessible, top-quality education. Our mission is to make learning engaging, fun, and inclusive, fostering growth for beginners and professionals alike. Join us to enhance your future!',
     keyFeatures: [
@@ -132,7 +135,14 @@ export const projectsData: ProjectData[] = [
     stack: ['React', 'Node.js', 'MongoDB', 'Express'],
     githubUrl: '#',
     liveUrl: '#',
-    images: ['/projects/braintube.webp'],
+    images: [
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036927/portfolio/braintube_irhyvt.webp',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036935/portfolio/Screenshot_21-6-2026_154251_braintube.kubacreatives.in_yk2hm7.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036932/portfolio/Screenshot_21-6-2026_154320_braintube.kubacreatives.in_nilyq7.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036928/portfolio/Screenshot_21-6-2026_154336_braintube.kubacreatives.in_yc0yi1.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036931/portfolio/Screenshot_21-6-2026_154459_braintube.kubacreatives.in_ycsoxg.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036929/portfolio/Screenshot_21-6-2026_154154_braintube.kubacreatives.in_lczrlz.jpg'
+    ],
     overview: 'An educational platform focused on video-based learning with integrated interactive notes that sync to video timestamps.',
     keyFeatures: [
       { title: 'Timestamped Notes', description: 'Users can take notes that are directly linked to specific moments in the video player.' },

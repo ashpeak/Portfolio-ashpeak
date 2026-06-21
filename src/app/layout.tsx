@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${syne.variable} ${figtree.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${syne.variable} ${figtree.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
       >
         <SmoothScrollProvider>
           <Cursor />

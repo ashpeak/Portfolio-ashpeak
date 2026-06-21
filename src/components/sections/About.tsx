@@ -8,6 +8,8 @@ import { personalInfo } from '@/lib/data'
 import { FadeUp } from '../motion/FadeUp'
 import { CountUp } from '../motion/CountUp'
 import { MapPin, ArrowRight, Code2, Coffee, GitBranch } from 'lucide-react'
+import dynamic from 'next/dynamic'
+const GitHubCalendar = dynamic(() => import('react-github-calendar').then(mod => mod.GitHubCalendar), { ssr: false })
 
 export default function About() {
   const bentoContainer = {
@@ -21,11 +23,11 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="py-24 md:py-32 px-6 max-w-6xl mx-auto">
+    <section id="about" className="py-12 md:py-20 px-6 max-w-6xl mx-auto">
       <SectionLabel>about</SectionLabel>
       <SectionTitle>Who I Am.</SectionTitle>
 
-      <motion.div 
+      <motion.div
         variants={bentoContainer}
         initial="hidden"
         whileInView="visible"
@@ -35,8 +37,12 @@ export default function About() {
         {/* Card A: Bio */}
         <motion.div variants={bentoItem} className="md:col-span-2">
           <BentoCard className="h-full flex flex-col md:flex-row items-center md:items-start gap-6 relative p-8">
-            <div className="w-24 h-24 rounded-full border-2 border-[var(--accent)] shrink-0 overflow-hidden bg-white/5">
-              {/* Add avatar img here */}
+            <div className="w-24 h-24 rounded-full border-2 border-[var(--accent)] shrink-0 overflow-hidden bg-white/5 relative">
+              <img
+                src="ashish.jpg"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-2xl font-display font-bold mb-1">Ashish Singh</h3>
@@ -108,9 +114,28 @@ export default function About() {
 
         {/* Card E: GitHub */}
         <motion.div variants={bentoItem} className="md:col-span-2">
-          <BentoCard className="h-full p-8 flex flex-col justify-center">
+          <BentoCard className="h-full p-8 flex flex-col justify-center overflow-hidden">
             <h4 className="font-display font-bold text-lg mb-4">GitHub Activity</h4>
-            <img src={`https://ghchart.rshah.org/C8FF00/${personalInfo.handle}`} alt="GitHub Heatmap" className="w-full opacity-80 mix-blend-screen invert" style={{ filter: 'hue-rotate(180deg) brightness(1.5)' }} />
+            <div className="w-full flex justify-center text-sm">
+              <GitHubCalendar 
+                username="ashpeak" 
+                colorScheme="dark"
+                theme={{
+                  dark: ['#161b22', '#324005', '#5a7309', '#8aa815', '#c8ff00']
+                }}
+                blockSize={12}
+                blockMargin={4}
+                fontSize={12}
+                transformData={(contributions) => {
+                  const past = new Date()
+                  past.setMonth(past.getMonth() - 6)
+                  return contributions.filter((day) => new Date(day.date) >= past)
+                }}
+                labels={{
+                  totalCount: '{{count}} contributions in the last 6 months',
+                }}
+              />
+            </div>
           </BentoCard>
         </motion.div>
 

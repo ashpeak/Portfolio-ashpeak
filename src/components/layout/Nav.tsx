@@ -79,7 +79,7 @@ export default function Nav() {
           </div>
 
           <div className="hidden md:flex">
-            <a href="/resume.pdf" target="_blank" className="text-sm font-medium hover:text-[var(--accent)] transition-colors flex items-center gap-1">
+            <a href="/resume" className="text-sm font-medium hover:text-[var(--accent)] transition-colors flex items-center gap-1">
               Resume <span className="text-xs">↗</span>
             </a>
           </div>
@@ -118,8 +118,7 @@ export default function Nav() {
                 </motion.a>
               ))}
               <motion.a
-                href="/resume.pdf"
-                target="_blank"
+                href="/resume"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: links.length * 0.1 }}

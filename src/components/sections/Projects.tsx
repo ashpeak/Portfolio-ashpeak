@@ -20,7 +20,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-24 md:py-32 px-6 max-w-6xl mx-auto">
+    <section id="projects" className="py-12 md:py-20 px-6 max-w-6xl mx-auto">
       <SectionLabel>projects</SectionLabel>
       <SectionTitle>Things I&apos;ve Built.</SectionTitle>
 

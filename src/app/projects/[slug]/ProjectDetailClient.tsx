@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import { ProjectData } from '@/lib/data/projects'
 import { Chip } from '@/components/ui/Chip'
 import { Button } from '@/components/ui/Button'
-import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ExternalLink, X, ZoomIn } from 'lucide-react'
 import Link from 'next/link'
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
@@ -24,6 +24,32 @@ interface Props {
 export default function ProjectDetailClient({ project, prevProject, nextProject }: Props) {
   const [activeSection, setActiveSection] = useState('overview')
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isLightboxOpen])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false)
+      } else if (e.key === 'ArrowRight' && isLightboxOpen) {
+        setActiveImageIndex(prev => (prev + 1) % project.images.length)
+      } else if (e.key === 'ArrowLeft' && isLightboxOpen) {
+        setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isLightboxOpen, project.images.length])
 
   const sections = [
     { id: 'overview', title: 'Overview' },
@@ -107,12 +133,20 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
             className="relative mb-12 rounded-2xl overflow-hidden border border-[var(--border)] aspect-video bg-[var(--bg-surface)] group"
           >
             {project.images.map((img, index) => (
-              <img 
+              <div 
                 key={index}
-                src={img} 
-                alt={`${project.name} screenshot ${index + 1}`} 
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === activeImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`} 
-              />
+                className={`absolute inset-0 w-full h-full cursor-zoom-in transition-opacity duration-700 ${index === activeImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                onClick={() => setIsLightboxOpen(true)}
+              >
+                <img 
+                  src={img} 
+                  alt={`${project.name} screenshot ${index + 1}`} 
+                  className="w-full h-full object-contain" 
+                />
+                <div className="absolute top-4 right-4 z-20 bg-black/40 backdrop-blur-md border border-white/10 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <ZoomIn size={16} />
+                </div>
+              </div>
             ))}
             
             {project.images.length > 1 && (
@@ -242,6 +276,74 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-8"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            {/* Close Button */}
+            <button 
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+              aria-label="Close lightbox"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Navigation Arrows */}
+            {project.images.length > 1 && (
+              <>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1)
+                  }}
+                  className="absolute left-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveImageIndex(prev => (prev + 1) % project.images.length)
+                  }}
+                  className="absolute right-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+                  aria-label="Next image"
+                >
+                  <ArrowRight size={20} />
+                </button>
+              </>
+            )}
+
+            {/* Zoomed Image Container */}
+            <motion.div 
+              initial={{ scale: 0.95, y: 10 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 10 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl max-h-[80vh] w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={project.images[activeImageIndex]} 
+                alt={`${project.name} screenshot detail ${activeImageIndex + 1}`}
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              />
+            </motion.div>
+            
+            {/* Image counter */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/50 border border-white/10 px-4 py-2 rounded-full text-sm font-mono text-white/80">
+              {activeImageIndex + 1} / {project.images.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
