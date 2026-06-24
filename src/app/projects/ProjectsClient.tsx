@@ -20,11 +20,11 @@ const GithubIcon = ({ size = 24 }: { size?: number }) => (
 export default function ProjectsClient() {
   const router = useRouter()
   const [filter, setFilter] = useState('All')
-  const categories = ['All', 'Full-Stack', 'AI/ML', 'Open Source']
+  const categories = ['All', 'Full-Stack', 'AI/ML', 'React Native']
 
   const filteredProjects = filter === 'All' 
     ? projectsData 
-    : projectsData.filter(p => p.category === filter)
+    : projectsData.filter(p => p.category.includes(filter))
 
   return (
     <>

@@ -23,6 +23,77 @@ export interface ProjectData {
 
 export const projectsData: ProjectData[] = [
   {
+    slug: 'meetlog',
+    name: 'MeetLog',
+    tagline: 'AI Meeting Intelligence — convert audio/transcripts to actionable insights',
+    date: '2024',
+    status: 'Completed',
+    category: 'Full-Stack, AI/ML',
+    role: 'Lead Architect & Full-Stack Developer',
+    stack: ['Next.js 16', 'React 19', 'Express', 'TypeScript', 'Drizzle ORM', 'PostgreSQL', 'Better Auth', 'BullMQ', 'AssemblyAI', 'Gemini AI', 'Tailwind CSS v4'],
+    images: [
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292642/portfolio/MeetLog/Screenshot_24-6-2026_143412_meetlog.ashpeak.me_ejjqan.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292642/portfolio/MeetLog/screenshot-1782291931562_mabule.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292642/portfolio/MeetLog/Screenshot_24-6-2026_143718_meetlog.ashpeak.me_sqkfn6.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782293278/portfolio/MeetLog/Screenshot_24-6-2026_145147_meetlog.ashpeak.me_tyfrdg.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782293278/portfolio/MeetLog/screenshot-1782293213012_asm3bg.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782293975/portfolio/MeetLog/screenshot-1782293938601_gseagk.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782293277/portfolio/MeetLog/Screenshot_24-6-2026_145040_meetlog.ashpeak.me_n0shrl.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292641/portfolio/MeetLog/screenshot-1782292091696_athov7.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292642/portfolio/MeetLog/screenshot-1782292126925_pmg693.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292641/portfolio/MeetLog/Screenshot_24-6-2026_143959_meetlog.ashpeak.me_udslsw.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292642/portfolio/MeetLog/Screenshot_24-6-2026_144045_meetlog.ashpeak.me_q2ktou.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782292641/portfolio/MeetLog/Screenshot_24-6-2026_143554_meetlog.ashpeak.me_qkjrsf.jpg'
+    ],
+    overview: 'MeetLog turns long, messy meetings into a structured artefact you can actually act on. By uploading an audio file or pasting a raw transcript, the system transcribes the audio, extracts decisions, action items, open questions, blockers, and a summary using Google Gemini, and allows you to push the result to Notion or Slack.',
+    keyFeatures: [
+      { title: 'AI Extraction & Transcription', description: 'Transcribes audio using AssemblyAI and extracts decisions, action items, open questions, blockers, and summaries using Google Gemini (with Vertex AI support).' },
+      { title: 'Notion & Slack Integrations', description: 'Connect once to push any completed meeting directly to a Notion database with one click, or send formatted summaries and action items to Slack via webhooks.' },
+      { title: 'PDF Exports & Share Links', description: 'Download a styled, single-file PDF of any meeting or generate opt-in public URLs to securely share meeting summaries.' },
+      { title: 'Action Item Tracking', description: 'Interactive action items with owners and deadlines that surface in red when overdue, plus single-click completion tracking.' },
+      { title: 'Full Transcript Search', description: 'In-page transcript search with prev/next match navigation.' },
+      { title: 'Dashboard & Analytics', description: 'Dedicated Dashboard, Action Items, and Analytics pages with TanStack-Query-driven caching, offline-friendly behaviour, and Recharts.' }
+    ],
+    architecture: 'The application operates as a TypeScript monorepo containing a Next.js 16 App Router frontend and an Express backend powered by Drizzle ORM and PostgreSQL. A BullMQ background worker (backed by Upstash Redis) handles long-running audio transcriptions via AssemblyAI and LLM extraction tasks asynchronously.',
+    techDecisions: 'A decoupled monorepo approach allowed independent scaling of the backend API and Next.js frontend. TanStack Query and Zustand were chosen for robust server state management and client state handling. BullMQ was essential for reliably queueing AssemblyAI webhooks and Gemini extraction tasks without holding the HTTP response, while Cloudinary serves as the primary audio storage.'
+  },
+  {
+    slug: 'spunk-ai',
+    name: 'SpunkAI',
+    tagline: 'Mobile-native AI coach marketplace and assistant app.',
+    date: '2024',
+    status: 'Completed',
+    category: 'React Native, AI/ML',
+    role: 'Lead Architect & Mobile Engineer — Designed the mobile application and permission controller',
+    stack: ['React Native', 'Expo', 'Tamagui', 'Node.js', 'Hono', 'Supabase', 'PostgreSQL', 'GCP Vertex AI', 'RevenueCat'],
+    images: [
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056538/portfolio/spunkai/Picture1_de906z.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056227/portfolio/spunkai/Picture3_vknres.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782055139/portfolio/spunkai/Picture4_tg8y52.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782055139/portfolio/spunkai/Picture5_ounwlx.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782055139/portfolio/spunkai/Picture6_vlor8q.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782055139/portfolio/spunkai/Picture7_tz01m3.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056542/portfolio/spunkai/Picture10_xichtx.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056540/portfolio/spunkai/Picture11_jlea1v.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056540/portfolio/spunkai/Picture12_j5hztt.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056538/portfolio/spunkai/Picture2_am5qiz.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056540/portfolio/spunkai/Picture13_w5rdj5.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056544/portfolio/spunkai/Picture8_pcamwl.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056543/portfolio/spunkai/Picture9_szhiuk.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056541/portfolio/spunkai/Picture14_orsve7.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782056539/portfolio/spunkai/Picture15_guzfht.jpg'
+    ],
+    overview: 'SpunkAI is a mobile-native AI coach marketplace and assistant app that allows users to create, deploy, and monetize specialized AI agents known as "Coaches". Each Coach functions as a personalized digital assistant with a predefined role and structured permissions. To solve privacy concerns, the app implements a permission-based architecture that restricts LLM tool usage to specific authorized mobile actions, enabling safe and autonomous execution in a controlled environment.',
+    keyFeatures: [
+      { title: 'Intelligent Coach Marketplace', description: 'Allows creators to design specialized AI personas with custom system prompts and monetize them using RevenueCat for entitlement checks.' },
+      { title: 'Skill Toggle Architecture', description: 'Dynamically injects system tool definitions into Vertex AI API calls based on Supabase database configurations, strictly adhering to the principle of least privilege.' },
+      { title: 'Proactive Action Execution', description: 'Enables AI agents to proactively trigger mobile device actions such as creating reminders, alarms, notes, timers, and calendar events rather than simply responding to chat prompts.' },
+      { title: 'Contextual Isolation & RAG', description: 'Supports uploading PDF files or raw text to give each coach isolated knowledge, utilizing Supabase with pgvector for secure localized embeddings.' }
+    ],
+    architecture: 'SpunkAI is built on a multi-tiered architecture. The frontend is built using React Native with Expo and styled with Tamagui for native fluid UI rendering. The backend is a decoupled Node.js and Hono middleware running as a secure orchestrator. Database configurations and memory context are stored in Supabase (PostgreSQL), utilizing pgvector for RAG vector embeddings, while GCP Vertex AI powers the core agent inference.',
+    techDecisions: 'A decoupled React Native storefront with Tamagui was chosen for cross-platform efficiency and fluid design aesthetics. Supabase and pgvector were selected for low-overhead database management and semantic search capabilities. Hono was chosen as the API gateway for its light footprint and speedy middleware validation, ensuring tool invocation checks happen in sub-milliseconds.'
+  },
+  {
     slug: 'braintube-main',
     name: 'Braintube',
     tagline: 'Empowering individuals with accessible, top-quality education.',
@@ -74,17 +145,36 @@ export const projectsData: ProjectData[] = [
     date: '2023',
     status: 'Completed',
     category: 'Full-Stack',
-    role: 'Lead Developer — Managed a small team and architected the primary backend services.',
-    stack: ['Next.js', 'Node.js', 'MongoDB', 'Redis', 'Easebuzz'],
-    githubUrl: '#',
-    liveUrl: '#',
-    images: ['/projects/thefitsheets.webp'],
-    overview: 'A robust e-commerce platform built from the ground up to handle high volumes of traffic and secure transactions. It includes a custom admin dashboard for inventory and order management.',
+    role: 'Lead Developer — Managed and architected the primary frontend and backend services',
+    stack: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Redis', 'AWS', 'Easebuzz', 'Cloudinary', 'Twilio', 'Klipfolio'],
+    liveUrl: 'https://fitsheets.kubacreatives.in',
+    images: [
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041157/portfolio/fitsheets/0C0DDE46-509A-4962-B8EE-A7241E61BBF3_drrh8g.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041169/portfolio/fitsheets/Screenshot_21-6-2026_1619_fitsheets.kubacreatives.in_ru0na3.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041165/portfolio/fitsheets/screenshot-1782037927671_dumfxb.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041165/portfolio/fitsheets/Screenshot_21-6-2026_163753_fitsheets.kubacreatives.in_iwah6v.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041165/portfolio/fitsheets/Screenshot_21-6-2026_163927_fitsheets.kubacreatives.in_wnm5ml.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041163/portfolio/fitsheets/Screenshot_21-6-2026_16421_fitsheets.kubacreatives.in_gkt5aj.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041159/portfolio/fitsheets/Screenshot_21-6-2026_164226_fitsheets.kubacreatives.in_anbxvx.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041158/portfolio/fitsheets/Screenshot_21-6-2026_164311_ilyzqd.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041162/portfolio/fitsheets/Screenshot_21-6-2026_164023_fitsheets.kubacreatives.in_msj7cs.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041159/portfolio/fitsheets/screenshot-1782040532106_drvjar.png',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041158/portfolio/fitsheets/Screenshot_21-6-2026_164553_fitsheets.kubacreatives.in_kpigvs.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041160/portfolio/fitsheets/Screenshot_21-6-2026_164632_fitsheets.kubacreatives.in_lqnfle.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041157/portfolio/fitsheets/Screenshot_21-6-2026_164658_fitsheets.kubacreatives.in_o3m73r.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041157/portfolio/fitsheets/Screenshot_21-6-2026_16545_fitsheets.kubacreatives.in_hqth1a.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041158/portfolio/fitsheets/Screenshot_21-6-2026_165424_fitsheets.kubacreatives.in_ta8fqr.jpg',
+      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782041158/portfolio/fitsheets/Screenshot_21-6-2026_164414_fitsheets.kubacreatives.in_np561a.jpg'
+    ],
+    overview: 'TheFitsheets is a highly scalable, enterprise-grade e-commerce platform designed to handle massive concurrent traffic spikes and deliver sub-second page loads. Featuring a decoupled architecture, it leverages a high-performance custom storefront, an advanced real-time inventory management system, and a robust administrative suite. The platform incorporates multi-layered caching, intelligent code splitting, and strict secure transaction flows to meet demanding enterprise requirements.',
     keyFeatures: [
-      { title: 'Secure Checkout', description: 'Integrated with Easebuzz payment gateway for seamless and secure transactions.' },
-      { title: 'Real-time Analytics', description: 'Custom dashboard showing live sales data using Redis for caching.' },
-      { title: 'Notification System', description: 'Automated SMS and email updates using Twilio.' }
-    ]
+      { title: 'Enterprise Scale Architecture', description: 'Built with a decoupled frontend and a dedicated load-balanced API backend to ensure maximum performance and fault tolerance.' },
+      { title: 'Performance & Optimization', description: 'Utilizes route-based code splitting, dynamic lazy loading, and React component memoization to minimize client-side bundle sizes and achieve perfect Lighthouse performance scores.' },
+      { title: 'Secure Transaction Engine', description: 'Integrates with Easebuzz payment gateway using tamper-proof cryptographic signatures, webhook validation, and tokenized payment states to guarantee financial security.' },
+      { title: 'Multi-tiered Caching & Notifications', description: 'Uses Redis for database query caching and session persistence, combined with Twilio for automated SMS/email customer notifications.' }
+    ],
+    architecture: 'The system is built on a highly performant decoupled architecture. The frontend is a Next.js application optimized with code splitting, dynamic imports, and component memoization. It communicates with a dedicated Node.js and Express backend hosted on AWS EC2 behind an Application Load Balancer (ALB). The backend is optimized for horizontal scalability, leveraging Redis as a high-speed caching layer for hot product catalogs, database queries, and session state, backed by a clusterized MongoDB instance for primary data persistence.',
+    techDecisions: 'Decoupling the frontend and backend allowed independent scaling of the user-facing catalog and checkout APIs. AWS Application Load Balancer was selected to automatically distribute incoming traffic across multiple containerized Express servers during high-demand promotional events. Redis integration was crucial to avoid database bottlenecks, keeping response times under 50ms by serving product configurations directly from memory.'
   },
   {
     slug: 'mingchat',
@@ -104,85 +194,5 @@ export const projectsData: ProjectData[] = [
       { title: 'Optimistic UI', description: 'Messages appear instantly on the sender\'s screen before server confirmation for a snappy experience.' }
     ],
     architecture: 'The app uses a standard Next.js frontend with a custom Express server to host the Socket.io instance. Redis is used both as a pub/sub mechanism across Node processes and to cache active user sessions.'
-  },
-  {
-    slug: 'effitask',
-    name: 'EffiTask',
-    tagline: 'Task management with calendar and priorities',
-    date: '2024',
-    status: 'Completed',
-    category: 'Full-Stack',
-    role: 'Full-Stack Developer — Implemented the drag-and-drop interface and database schema.',
-    stack: ['Vite', 'React', 'PostgreSQL', 'Drizzle'],
-    githubUrl: '#',
-    liveUrl: '#',
-    images: ['/projects/effitask.webp'],
-    overview: 'A productivity tool that combines a traditional to-do list with a drag-and-drop calendar interface. Designed for people who want to time-block their tasks effectively.',
-    keyFeatures: [
-      { title: 'Drag & Drop', description: 'Fluid drag-and-drop interface for moving tasks onto specific calendar slots.' },
-      { title: 'Priority Matrix', description: 'Automatic sorting of tasks based on urgency and importance.' }
-    ],
-    architecture: 'Built as a Single Page Application (SPA) using Vite and React, communicating with a lightweight REST API backed by PostgreSQL.'
-  },
-  {
-    slug: 'braintube',
-    name: 'Braintube',
-    tagline: 'Ed-Tech Platform for interactive learning',
-    date: '2022',
-    status: 'Completed',
-    category: 'Full-Stack',
-    role: 'Full-Stack Developer — Built the core course delivery engine and note-taking system.',
-    stack: ['React', 'Node.js', 'MongoDB', 'Express'],
-    githubUrl: '#',
-    liveUrl: '#',
-    images: [
-      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036927/portfolio/braintube_irhyvt.webp',
-      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036935/portfolio/Screenshot_21-6-2026_154251_braintube.kubacreatives.in_yk2hm7.jpg',
-      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036932/portfolio/Screenshot_21-6-2026_154320_braintube.kubacreatives.in_nilyq7.jpg',
-      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036928/portfolio/Screenshot_21-6-2026_154336_braintube.kubacreatives.in_yc0yi1.jpg',
-      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036931/portfolio/Screenshot_21-6-2026_154459_braintube.kubacreatives.in_ycsoxg.jpg',
-      'https://res.cloudinary.com/dhfuu5omv/image/upload/v1782036929/portfolio/Screenshot_21-6-2026_154154_braintube.kubacreatives.in_lczrlz.jpg'
-    ],
-    overview: 'An educational platform focused on video-based learning with integrated interactive notes that sync to video timestamps.',
-    keyFeatures: [
-      { title: 'Timestamped Notes', description: 'Users can take notes that are directly linked to specific moments in the video player.' },
-      { title: 'Course Management', description: 'Full CMS for instructors to upload and organize their content.' }
-    ]
-  },
-  {
-    slug: 'whisper-vault',
-    name: 'Whisper-Vault',
-    tagline: 'End-to-end encrypted secret sharing service',
-    date: '2023',
-    status: 'Completed',
-    category: 'Open Source',
-    role: 'Solo Developer — Implemented client-side encryption and serverless backend.',
-    stack: ['Next.js', 'Web Crypto API', 'Supabase'],
-    githubUrl: '#',
-    liveUrl: '#',
-    images: ['/projects/whisper-vault.webp'],
-    overview: 'A secure way to share sensitive information like API keys or passwords. The secret is encrypted in the browser, and the server never sees the decryption key.',
-    keyFeatures: [
-      { title: 'E2E Encryption', description: 'Uses AES-GCM for encryption within the browser before the payload ever hits the network.' },
-      { title: 'Burn After Reading', description: 'Secrets are permanently deleted from the database as soon as they are viewed once.' }
-    ]
-  },
-  {
-    slug: 'imdb-clone',
-    name: 'IMDB Clone',
-    tagline: 'Movie discovery app using the TMDB API',
-    date: '2022',
-    status: 'Completed',
-    category: 'Full-Stack',
-    role: 'Frontend Developer — Focused on responsive design and API integration.',
-    stack: ['React', 'TMDB API', 'Tailwind CSS'],
-    githubUrl: '#',
-    liveUrl: '#',
-    images: ['/projects/imdb-clone.webp'],
-    overview: 'A visual clone of IMDB built to master React state management and third-party API integration. Features comprehensive search, filtering, and detailed movie pages.',
-    keyFeatures: [
-      { title: 'Infinite Scroll', description: 'Seamlessly loads more movies as the user scrolls down the page.' },
-      { title: 'Dynamic Search', description: 'Debounced search input fetching live results from TMDB.' }
-    ]
   }
 ]

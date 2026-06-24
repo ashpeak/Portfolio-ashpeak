@@ -11,6 +11,55 @@ import { MapPin, ArrowRight, Code2, Coffee, GitBranch } from 'lucide-react'
 import dynamic from 'next/dynamic'
 const GitHubCalendar = dynamic(() => import('react-github-calendar').then(mod => mod.GitHubCalendar), { ssr: false })
 
+interface Activity {
+  date: string;
+  count: number;
+  level: 0 | 1 | 2 | 3 | 4;
+}
+
+const selectLastHalfYear = (contributions: Activity[]) => {
+  if (contributions.length === 0) return contributions;
+
+  const lastEntry = contributions[contributions.length - 1];
+  const lastDate = new Date(lastEntry.date);
+
+  const startDate = new Date(lastDate);
+  startDate.setMonth(startDate.getMonth() - 6);
+
+  // Align start date to the Sunday of that week
+  const startDayOfWeek = startDate.getUTCDay();
+  startDate.setUTCDate(startDate.getUTCDate() - startDayOfWeek);
+
+  // Filter contributions
+  const filtered = contributions.filter((day) => {
+    const d = new Date(day.date);
+    return d >= startDate;
+  });
+
+  // Pad the end to the Saturday of the last week
+  const endDayOfWeek = lastDate.getUTCDay();
+  const daysToSaturday = 6 - endDayOfWeek;
+
+  if (daysToSaturday > 0) {
+    const padStart = new Date(lastDate);
+    for (let i = 1; i <= daysToSaturday; i++) {
+      const nextDate = new Date(padStart);
+      nextDate.setUTCDate(nextDate.getUTCDate() + i);
+      const yyyy = nextDate.getUTCFullYear();
+      const mm = String(nextDate.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(nextDate.getUTCDate()).padStart(2, '0');
+      const dateStr = `${yyyy}-${mm}-${dd}`;
+      filtered.push({
+        date: dateStr,
+        count: 0,
+        level: 0,
+      });
+    }
+  }
+
+  return filtered;
+};
+
 export default function About() {
   const bentoContainer = {
     hidden: {},
@@ -126,11 +175,7 @@ export default function About() {
                 blockSize={12}
                 blockMargin={4}
                 fontSize={12}
-                transformData={(contributions) => {
-                  const past = new Date()
-                  past.setMonth(past.getMonth() - 6)
-                  return contributions.filter((day) => new Date(day.date) >= past)
-                }}
+                transformData={selectLastHalfYear}
                 labels={{
                   totalCount: '{{count}} contributions in the last 6 months',
                 }}

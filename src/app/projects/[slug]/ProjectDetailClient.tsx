@@ -98,7 +98,9 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
               <span className="text-[var(--border-strong)]">|</span>
               <span className={project.status === 'Completed' ? 'text-[var(--green-dot)]' : 'text-yellow-500'}>{project.status}</span>
               <span className="text-[var(--border-strong)]">|</span>
-              <span className="bg-white/5 px-2 py-1 rounded">{project.category}</span>
+              {project.category.split(',').map((cat) => (
+                <span key={cat} className="bg-white/5 px-2 py-1 rounded">{cat.trim()}</span>
+              ))}
             </div>
 
             <div className="flex flex-wrap gap-4 mb-8">

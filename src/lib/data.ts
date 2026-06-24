@@ -61,6 +61,14 @@ export const experience = [
 
 export const projects = [
   {
+    id: '0',
+    name: 'SpunkAI',
+    desc: 'Mobile-native AI coach marketplace and assistant app',
+    stack: ['React Native', 'Expo', 'Tamagui', 'Node.js', 'Hono', 'Supabase', 'PostgreSQL', 'Vertex AI', 'RevenueCat'],
+    live: '#',
+    featured: true,
+  },
+  {
     id: '1',
     name: 'startupideadb.com',
     desc: 'Startup ideas aggregation platform with AI enrichment',
@@ -80,8 +88,7 @@ export const projects = [
     id: '3',
     name: 'TheFitsheets',
     desc: 'E-commerce with payments, analytics, notifications',
-    stack: ['Next.js', 'Node', 'MongoDB'],
-    github: '#',
+    stack: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Redis', 'AWS', 'Easebuzz', 'Cloudinary', 'Twilio', 'Klipfolio'],
     featured: false,
   },
   {
