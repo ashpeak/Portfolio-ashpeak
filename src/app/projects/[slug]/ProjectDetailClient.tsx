@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { ProjectData } from '@/lib/data/projects'
 import { Chip } from '@/components/ui/Chip'
@@ -51,13 +51,13 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isLightboxOpen, project.images.length])
 
-  const sections = [
+  const sections = useMemo(() => [
     { id: 'overview', title: 'Overview' },
     { id: 'key-features', title: 'Key Features' },
     ...(project.architecture ? [{ id: 'architecture', title: 'Architecture' }] : []),
     ...(project.techDecisions ? [{ id: 'tech-decisions', title: 'Tech Decisions' }] : []),
     { id: 'role', title: 'Role' }
-  ]
+  ], [project.architecture, project.techDecisions])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -196,14 +196,14 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
 
           <div className="space-y-20">
             <section id="overview" className="scroll-mt-32">
-              <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">// overview</p>
+              <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">{"// overview"}</p>
               <div className="text-white/70 leading-relaxed text-lg space-y-4">
                 <p>{project.overview}</p>
               </div>
             </section>
 
             <section id="key-features" className="scroll-mt-32">
-              <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">// key features</p>
+              <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">{"// key features"}</p>
               <ul className="space-y-6">
                 {project.keyFeatures.map((f, i) => (
                   <li key={i} className="text-white/70 leading-relaxed flex items-start gap-3">
@@ -219,7 +219,7 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
 
             {project.architecture && (
               <section id="architecture" className="scroll-mt-32">
-                <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">// architecture</p>
+                <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">{"// architecture"}</p>
                 <div className="text-white/70 leading-relaxed text-lg space-y-4">
                   <p>{project.architecture}</p>
                 </div>
@@ -228,7 +228,7 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
 
             {project.techDecisions && (
               <section id="tech-decisions" className="scroll-mt-32">
-                <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">// tech decisions</p>
+                <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">{"// tech decisions"}</p>
                 <div className="text-white/70 leading-relaxed text-lg space-y-4">
                   <p>{project.techDecisions}</p>
                 </div>
@@ -236,7 +236,7 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
             )}
 
             <section id="role" className="scroll-mt-32">
-              <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">// role</p>
+              <p className="text-[var(--accent)] text-xs font-mono tracking-widest mb-6">{"// role"}</p>
               <div className="text-white/70 leading-relaxed text-lg space-y-4">
                 <p>{project.role}</p>
               </div>

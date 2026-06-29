@@ -10,12 +10,13 @@ export const skills = [
   { name: 'Tailwind',   category: 'Frontend',  icon: 'tailwindcss',   colorBlend: '#43e97b, #38f9d7, #4facfe' }, // Green -> Cyan -> Blue
   { name: 'shadcn/ui',  category: 'Frontend',  icon: 'shadcnui',      colorBlend: '#a18cd1, #fbc2eb, #ffb199' }, // Violet -> Pink -> Orange
   { name: 'Vite',       category: 'Frontend',  icon: 'vite',          colorBlend: '#c471f5, #fa71cd, #f6d365' }, // Purple -> Pink -> Yellow
+  { name: 'React Native', category: 'Frontend',  icon: 'react',         colorBlend: '#4facfe, #00f2fe, #4facfe' },
 
   // Backend
   { name: 'Node.js',    category: 'Backend',   icon: 'nodedotjs',     colorBlend: '#d4fc79, #96e6a1, #00f2fe' }, // Lime -> Green -> Cyan
   { name: 'Express.js', category: 'Backend',   icon: 'express',       colorBlend: '#434343, #8e2de2, #fa71cd' }, // Dark Gray -> Violet -> Pink
   { name: 'Hono',       category: 'Backend',   icon: 'hono',          colorBlend: '#f6d365, #ff0844, #8e2de2' }, // Orange -> Magenta -> Violet
-  { name: 'Bun',        category: 'Backend',   icon: 'bun',           colorBlend: '#f6d365, #fda085, #fbc2eb' }, // Yellow -> Peach -> Pink
+
 
   // Database
   { name: 'PostgreSQL', category: 'Database',  icon: 'postgresql',    colorBlend: '#00f2fe, #4facfe, #667eea' }, // Cyan -> Blue -> Indigo
@@ -32,6 +33,9 @@ export const skills = [
   { name: 'Gemini',     category: 'Tools',     icon: 'googlegemini',  colorBlend: '#a18cd1, #fa71cd, #00f2fe' }, // Violet -> Pink -> Cyan
   { name: 'Docker',     category: 'Tools',     icon: 'docker',        colorBlend: '#00f2fe, #4facfe, #667eea' }, // Cyan -> Blue -> Indigo
   { name: 'Git',        category: 'Tools',     icon: 'git',           colorBlend: '#ff0844, #fda085, #8e2de2' }, // Red -> Orange -> Violet
+  { name: 'VS Code',      category: 'Tools',     icon: 'visualstudiocode', colorBlend: '#007acc, #4facfe, #8e2de2' },
+  { name: 'Codex',        category: 'Tools',     icon: 'openai',        colorBlend: '#412991, #8e2de2, #00f2fe' },
+  { name: 'AWS',          category: 'Tools',     icon: 'amazonaws',     colorBlend: '#ff9900, #f6d365, #fda085' },
 ]
 
 export const skillCategories = ['All', 'Languages', 'Frontend', 'Backend', 'Database', 'Tools']

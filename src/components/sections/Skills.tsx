@@ -108,7 +108,7 @@ export default function Skills() {
         {/* Label + Title */}
         <div style={{ marginBottom: '40px' }}>
           <p style={{ color: '#c8ff00', fontSize: '12px', fontFamily: 'monospace', letterSpacing: '0.1em', marginBottom: '8px' }}>
-            // skills
+            {"// skills"}
           </p>
           <h2 style={{ color: '#ededed', fontSize: '40px', fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>
             What I Work With.

@@ -6,7 +6,7 @@ const items = [
   'Next.js', '•', 'React', '•', 'TypeScript', '•', 'Node.js', '•',
   'PostgreSQL', '•', 'Tailwind', '•', 'Hono', '•', 'Docker', '•',
   'Socket.io', '•', 'Redis', '•', 'Prisma', '•', 'Drizzle', '•',
-  'MongoDB', '•', 'Vite', '•', 'Git', '•', 'Bun', '•',
+  'MongoDB', '•', 'Vite', '•', 'Git', '•', 'React Native', '•', 'VS Code', '•', 'Codex', '•', 'AWS', '•',
 ]
 
 export function Marquee() {

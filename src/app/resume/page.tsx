@@ -13,13 +13,13 @@ export default function ResumePage() {
   return (
     <main className="min-h-screen pt-24 pb-24 px-6 bg-[var(--bg-base)]">
       <div className="max-w-3xl mx-auto">
-        
+
         {/* Top Navigation */}
         <div className="flex items-center justify-between mb-16">
           <Link href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors font-mono text-sm">
             <ArrowLeft size={16} /> Back to Home
           </Link>
-          <a href={personalInfo.resume} target="_blank" rel="noopener noreferrer">
+          <a href={personalInfo.resume} download="Ashish_Singh_Resume.pdf" target="_blank" rel="noopener noreferrer">
             <Button variant="primary" className="flex items-center gap-2 py-2 px-4 rounded-md text-sm">
               <Download size={16} /> Download PDF
             </Button>
@@ -42,7 +42,7 @@ export default function ResumePage() {
         </div>
 
         <div className="space-y-14">
-          
+
           {/* Summary */}
           <section>
             <h2 className="text-xl font-display font-bold mb-4 text-white border-b border-white/10 pb-2">Summary</h2>
@@ -57,7 +57,7 @@ export default function ResumePage() {
             <div className="space-y-3 text-sm leading-relaxed">
               <div className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
                 <span className="text-white/90 font-medium">Languages</span>
-                <span className="text-white/60">TypeScript, JavaScript, Python, SQL, HTML, CSS</span>
+                <span className="text-white/60">TypeScript, JavaScript, SQL, HTML, CSS</span>
               </div>
               <div className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
                 <span className="text-white/90 font-medium">Frontend</span>
@@ -69,11 +69,11 @@ export default function ResumePage() {
               </div>
               <div className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
                 <span className="text-white/90 font-medium">Databases</span>
-                <span className="text-white/60">PostgreSQL, MongoDB, Redis, Drizzle ORM, Prisma</span>
+                <span className="text-white/60">PostgreSQL, MongoDB, Redis, Prisma</span>
               </div>
               <div className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
                 <span className="text-white/90 font-medium">Tools & Cloud</span>
-                <span className="text-white/60">Git, Docker, Vercel, Firebase, GCP</span>
+                <span className="text-white/60">Git, Docker, Vercel, Firebase, GCP, AWS</span>
               </div>
             </div>
           </section>

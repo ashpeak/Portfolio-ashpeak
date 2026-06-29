@@ -1,16 +1,20 @@
-import { cn } from "@/lib/utils"
+'use client'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+import { cn } from "@/lib/utils"
+import { motion, HTMLMotionProps } from "motion/react"
+
+interface ButtonProps extends HTMLMotionProps<"button"> {
   variant?: 'primary' | 'ghost'
 }
 
 export function Button({ children, variant = 'primary', className, ...props }: ButtonProps) {
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.95 }}
       className={cn(variant === 'primary' ? 'btn-primary' : 'btn-ghost', className)}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   )
 }

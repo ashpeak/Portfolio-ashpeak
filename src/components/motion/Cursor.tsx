@@ -50,7 +50,7 @@ export default function Cursor() {
           y: position.y - 8,
           scale: isHovering ? 3 : 1,
         }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 2 }}
+        transition={{ type: 'spring', stiffness: 1000, damping: 28, mass: 0.1 }}
       />
       {/* Trail Dot */}
       <motion.div
@@ -59,7 +59,7 @@ export default function Cursor() {
           x: position.x - 3,
           y: position.y - 3,
         }}
-        transition={{ type: 'spring', stiffness: 250, damping: 20, mass: 1 }}
+        transition={{ type: 'spring', stiffness: 800, damping: 25, mass: 0.2 }}
       />
     </>
   )

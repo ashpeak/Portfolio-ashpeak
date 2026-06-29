@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 const links = [
   { name: 'Home', href: '/#home' },
@@ -52,14 +53,14 @@ export default function Nav() {
         )}
       >
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="/#home" className="font-display font-bold text-2xl tracking-tighter">
+          <Link href="/#home" className="font-display font-bold text-2xl tracking-tighter">
             ak<span className="text-[var(--accent)]">.</span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-medium text-white/80 hover:text-white transition-colors relative"
@@ -74,14 +75,14 @@ export default function Nav() {
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden md:flex">
-            <a href="/resume" className="text-sm font-medium hover:text-[var(--accent)] transition-colors flex items-center gap-1">
+            <Link href="/resume" className="text-sm font-medium hover:text-[var(--accent)] transition-colors flex items-center gap-1">
               Resume <span className="text-xs">↗</span>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -105,27 +106,35 @@ export default function Nav() {
           >
             <div className="flex flex-col items-center gap-8 text-center">
               {links.map((link, i) => (
-                <motion.a
+                <motion.div
                   key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: i * 0.1 }}
-                  className="text-3xl font-display font-bold hover:text-[var(--accent)]"
                 >
-                  {link.name}
-                </motion.a>
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-3xl font-display font-bold hover:text-[var(--accent)] block"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <motion.a
-                href="/resume"
+              <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: links.length * 0.1 }}
-                className="text-xl font-medium mt-4 text-[var(--accent)]"
+                className="mt-4"
               >
-                Resume ↗
-              </motion.a>
+                <Link
+                  href="/resume"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-xl font-medium text-[var(--accent)] block"
+                >
+                  Resume ↗
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

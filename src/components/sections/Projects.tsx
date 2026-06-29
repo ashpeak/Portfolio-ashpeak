@@ -7,6 +7,7 @@ import { projectsData } from '@/lib/data/projects'
 import { BentoCard } from '../ui/BentoCard'
 import { ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 export default function Projects() {
   const bentoContainer = {
@@ -37,7 +38,7 @@ export default function Projects() {
             variants={bentoItem}
             className={cn((i === 0 || i === 3) && "lg:col-span-2")}
           >
-            <a href={`/projects/${project.slug}`} className="block h-full">
+            <Link href={`/projects/${project.slug}`} className="block h-full">
               <BentoCard className="h-full group flex flex-col cursor-pointer">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="font-display font-bold text-xl">{project.name}</h3>
@@ -65,19 +66,19 @@ export default function Projects() {
                   ))}
                 </div>
               </BentoCard>
-            </a>
+            </Link>
           </motion.div>
         ))}
         
         {/* View All Card */}
         <motion.div variants={bentoItem}>
-          <a href="/projects" className="block h-full">
+          <Link href="/projects" className="block h-full">
             <BentoCard className="h-full flex items-center justify-center group hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-colors duration-300">
               <div className="flex items-center gap-2 group-hover:text-black transition-colors font-display font-bold text-lg">
                 View All Projects <motion.span className="group-hover:translate-x-1 transition-transform">→</motion.span>
               </div>
             </BentoCard>
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

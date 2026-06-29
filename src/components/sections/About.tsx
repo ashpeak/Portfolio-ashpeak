@@ -5,7 +5,6 @@ import { SectionLabel } from '../ui/SectionLabel'
 import { SectionTitle } from '../ui/SectionTitle'
 import { BentoCard } from '../ui/BentoCard'
 import { personalInfo } from '@/lib/data'
-import { FadeUp } from '../motion/FadeUp'
 import { CountUp } from '../motion/CountUp'
 import { MapPin, ArrowRight, Code2, Coffee, GitBranch } from 'lucide-react'
 import dynamic from 'next/dynamic'
@@ -189,10 +188,10 @@ export default function About() {
           <BentoCard className="h-full flex flex-col justify-between p-8">
             <div>
               <h4 className="font-display font-bold text-lg mb-1">Currently Building</h4>
-              <p className="text-[var(--accent)] text-sm mb-4 font-mono">startupideadb.com</p>
-              <p className="text-white/60 text-sm">Startup ideas aggregation platform.</p>
+              <p className="text-[var(--accent)] text-sm mb-4 font-mono">shattermoon.com</p>
+              <p className="text-white/60 text-sm">App & Game Studio.</p>
             </div>
-            <a href="#" className="flex items-center gap-1 text-sm font-medium text-white hover:text-[var(--accent)] transition-colors mt-4">
+            <a href="https://shattermoon.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm font-medium text-white hover:text-[var(--accent)] transition-colors mt-4">
               Visit <ArrowRight size={14} />
             </a>
           </BentoCard>

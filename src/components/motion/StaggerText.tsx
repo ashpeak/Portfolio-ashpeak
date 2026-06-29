@@ -27,7 +27,7 @@ export function StaggerText({ text, className = '', delay = 0, stagger = 0.03 }:
       opacity: 1,
       rotateX: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         damping: 12,
         stiffness: 100,
       },

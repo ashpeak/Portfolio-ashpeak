@@ -9,6 +9,7 @@ import { MagneticWrap } from '@/components/motion/MagneticWrap'
 import { TextScramble } from '@/components/motion/TextScramble'
 import { FloatingParticles } from '@/components/motion/FloatingParticles'
 import { Mail } from 'lucide-react'
+import Link from 'next/link'
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -90,10 +91,10 @@ export default function Hero() {
         <FadeUp delay={0.7} animateOnMount={true}>
           <div className="flex items-center gap-4 mb-12">
             <MagneticWrap strength={0.2}>
-              <a href="/#projects"><Button variant="primary">View Projects</Button></a>
+              <Link href="/#projects"><Button variant="primary">View Projects</Button></Link>
             </MagneticWrap>
             <MagneticWrap strength={0.2}>
-              <a href="/resume"><Button variant="ghost">Resume ↗</Button></a>
+              <Link href="/resume"><Button variant="ghost">Resume ↗</Button></Link>
             </MagneticWrap>
           </div>
         </FadeUp>

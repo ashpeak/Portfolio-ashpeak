@@ -9,7 +9,7 @@ export const personalInfo = {
   github: "https://github.com/ashpeak",
   linkedin: "https://www.linkedin.com/in/ashpeak/",
   instagram: "https://www.instagram.com/_.singhashish/",
-  telegram: "https://t.me/AshishDogo",
+  x: "https://x.com/ashishs61",
   resume: "/resume.pdf",
   available: true
 }
@@ -21,7 +21,7 @@ export const roles = ['Full-Stack Developer', 'Solo Builder', 'Product Engineer'
 export const experience = [
   {
     id: '01',
-    role: 'Full-Stack Developer',
+    role: 'Freelance Full-Stack Developer',
     company: 'Fitsheets',
     type: 'ECOM',
     period: 'Jul 2023 — Nov 2023',
@@ -35,25 +35,25 @@ export const experience = [
   },
   {
     id: '02',
-    role: 'Full-Stack Developer',
-    company: 'Braintube',
-    type: 'EDU',
-    period: 'Mar 2022 — Dec 2022',
+    role: 'Freelance Full-Stack Developer',
+    company: 'CVTPL',
+    type: 'NDA',
+    period: 'Jan 2026 — Present',
     bullets: [
-      'Designed and built full-stack ed-tech platform from scratch',
-      'Features: user auth, course enrollment, note-making, responsive design',
+      'Developed full-stack web applications and architectures.',
+      'Specific project details and features are confidential under NDA.',
     ],
-    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Redis', 'Socket.io']
+    stack: []
   },
   {
     id: '03',
-    role: 'Freelance / Personal Projects',
-    company: 'Self',
-    type: 'Indie',
+    role: 'Founder / Builder',
+    company: 'Shattermoon',
+    type: 'Startup',
     period: '2023 — Present',
     bullets: [
-      'Building startupideadb.com — startup ideas aggregation platform',
-      'Solo builder: Next.js frontend, Hono/Node.js backend, PostgreSQL, Vertex AI',
+      'Building Shattermoon — App & Game Studio',
+      'Crafting innovative games and applications that blend artistry and technology',
     ],
     stack: ['Next.js', 'Hono', 'PostgreSQL', 'Drizzle ORM', 'Better Auth', 'Vertex AI']
   }
@@ -62,57 +62,51 @@ export const experience = [
 export const projects = [
   {
     id: '0',
-    name: 'SpunkAI',
-    desc: 'Mobile-native AI coach marketplace and assistant app',
-    stack: ['React Native', 'Expo', 'Tamagui', 'Node.js', 'Hono', 'Supabase', 'PostgreSQL', 'Vertex AI', 'RevenueCat'],
-    live: '#',
+    name: 'MeetLog',
+    desc: 'AI Meeting Intelligence — convert audio/transcripts to actionable insights',
+    stack: ['Next.js 16', 'Express', 'TypeScript', 'Drizzle ORM', 'PostgreSQL', 'BullMQ', 'Gemini AI'],
+    live: 'https://meetlog.ashpeak.me',
+    github: 'https://github.com/ashpeak/MeetLog.git',
     featured: true,
   },
   {
     id: '1',
-    name: 'startupideadb.com',
-    desc: 'Startup ideas aggregation platform with AI enrichment',
-    stack: ['Next.js', 'Hono', 'PostgreSQL', 'Vertex AI'],
-    live: '#',
+    name: 'TheFitsheets',
+    desc: 'Enterprise E-commerce platform with payments, analytics, and notifications',
+    stack: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Redis', 'AWS'],
+    live: 'https://fitsheets.kubacreatives.in',
     featured: true,
   },
   {
     id: '2',
     name: 'Blink.ai',
     desc: 'AI-powered video creation using scripts, APIs, cloud editing',
-    stack: ['React', 'Node', 'FFmpeg', 'Gemini'],
+    stack: ['React', 'Node.js', 'FFmpeg', 'Gemini AI'],
     github: '#',
-    featured: false,
+    featured: true,
   },
   {
     id: '3',
-    name: 'TheFitsheets',
-    desc: 'E-commerce with payments, analytics, notifications',
-    stack: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Redis', 'AWS', 'Easebuzz', 'Cloudinary', 'Twilio', 'Klipfolio'],
+    name: 'SpunkAI',
+    desc: 'Mobile-native AI coach marketplace and assistant app',
+    stack: ['React Native', 'Expo', 'Tamagui', 'Node.js', 'Hono', 'Supabase', 'PostgreSQL', 'Vertex AI'],
+    live: '#',
     featured: false,
   },
   {
     id: '4',
     name: 'MingChat',
     desc: 'Real-time chat platform with 1-on-1 and groups',
-    stack: ['Next.js', 'Socket.io', 'Redis'],
+    stack: ['Next.js', 'Socket.io', 'Redis', 'Express'],
     github: '#',
     featured: true,
   },
   {
     id: '5',
-    name: 'EffiTask',
-    desc: 'Task management with calendar and priorities',
-    stack: ['Vite', 'Postgres', 'Drizzle'],
-    github: '#',
-    featured: false,
-  },
-  {
-    id: '6',
     name: 'Braintube',
-    desc: 'Ed-Tech Platform',
-    stack: ['MERN Stack'],
-    github: '#',
+    desc: 'Full-stack Ed-Tech Platform from scratch',
+    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
+    live: 'https://braintube.kubacreatives.in/',
     featured: false,
   }
 ]
