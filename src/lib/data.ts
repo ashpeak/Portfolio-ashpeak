@@ -82,7 +82,8 @@ export const projects = [
     name: 'Blink.ai',
     desc: 'AI-powered video creation using scripts, APIs, cloud editing',
     stack: ['React', 'Node.js', 'FFmpeg', 'Gemini AI'],
-    github: '#',
+    live: 'https://blink-ai.vercel.app/',
+    github: 'https://github.com/ashpeak/lizard-ai',
     featured: true,
   },
   {
@@ -90,6 +91,7 @@ export const projects = [
     name: 'SpunkAI',
     desc: 'Mobile-native AI coach marketplace and assistant app',
     stack: ['React Native', 'Expo', 'Tamagui', 'Node.js', 'Hono', 'Supabase', 'PostgreSQL', 'Vertex AI'],
+    github: 'https://github.com/ashpeak/SpunkAI',
     live: '#',
     featured: false,
   },
@@ -98,7 +100,7 @@ export const projects = [
     name: 'MingChat',
     desc: 'Real-time chat platform with 1-on-1 and groups',
     stack: ['Next.js', 'Socket.io', 'Redis', 'Express'],
-    github: '#',
+    github: 'https://github.com/ashpeak/chat-arena',
     featured: true,
   },
   {
