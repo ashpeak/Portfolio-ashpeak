@@ -32,5 +32,25 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const prevProject = projectIndex > 0 ? projectsData[projectIndex - 1] : null
   const nextProject = projectIndex < projectsData.length - 1 ? projectsData[projectIndex + 1] : null
 
-  return <ProjectDetailClient project={project} prevProject={prevProject} nextProject={nextProject} />
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: project.name,
+    description: project.tagline,
+    author: {
+      '@type': 'Person',
+      name: 'Ashish Singh',
+    },
+    codeRepository: project.githubUrl,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectDetailClient project={project} prevProject={prevProject} nextProject={nextProject} />
+    </>
+  );
 }

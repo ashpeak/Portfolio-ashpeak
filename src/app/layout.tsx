@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/components/layout/SmoothScroll";
 import Cursor from "@/components/motion/Cursor";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -25,8 +26,25 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ashish Singh — Full-Stack Developer",
+  metadataBase: new URL("https://www.ashpeak.me"),
+  title: {
+    default: "Ashish Singh — Full-Stack Developer",
+    template: "%s | Ashish Singh",
+  },
   description: "Portfolio of Ashish Singh, Full-Stack Developer & Builder.",
+  openGraph: {
+    title: "Ashish Singh — Full-Stack Developer",
+    description: "Portfolio of Ashish Singh, Full-Stack Developer & Builder.",
+    url: "https://www.ashpeak.me",
+    siteName: "Ashish Singh",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ashish Singh — Full-Stack Developer",
+    description: "Portfolio of Ashish Singh, Full-Stack Developer & Builder.",
+  },
 };
 
 export default function RootLayout({
@@ -45,6 +63,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </SmoothScrollProvider>
+        <GoogleAnalytics gaId="G-YX1FYX8FGP" />
       </body>
     </html>
   );

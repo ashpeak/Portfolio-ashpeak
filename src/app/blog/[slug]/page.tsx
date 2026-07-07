@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 export const revalidate = 60;
 
@@ -15,6 +16,30 @@ async function getPost(slug: string) {
   return JSON.parse(JSON.stringify(post));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  if (!post) return {};
+  
+  const description = post.content.replace(/[#*`_\[\]]/g, '').slice(0, 160);
+  
+  return {
+    title: post.title,
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+      type: 'article',
+      publishedTime: post.createdAt,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+    }
+  };
+}
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(slug);
@@ -23,8 +48,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    datePublished: post.createdAt,
+    author: {
+      '@type': 'Person',
+      name: 'Ashish Singh',
+    },
+  };
+
   return (
     <div className="min-h-screen selection:bg-white/30 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
         <Link 
           href="/blog" 
