@@ -58,3 +58,34 @@ export async function deletePost(id: string) {
   revalidatePath('/blog');
   return { success: true };
 }
+
+export async function getPostById(id: string) {
+  await requireAuth();
+  await connectToDatabase();
+  
+  const post = await Post.findById(id).lean();
+  if (!post) throw new Error('Post not found');
+  return JSON.parse(JSON.stringify(post));
+}
+
+export async function updatePost(id: string, formData: FormData) {
+  await requireAuth();
+  await connectToDatabase();
+
+  const title = formData.get('title') as string;
+  const slug = formData.get('slug') as string;
+  const content = formData.get('content') as string;
+  const published = formData.get('published') === 'on';
+
+  await Post.findByIdAndUpdate(id, {
+    title,
+    slug,
+    content,
+    published,
+  });
+
+  revalidatePath('/admin');
+  revalidatePath('/blog');
+  revalidatePath(`/blog/${slug}`);
+  return { success: true };
+}
