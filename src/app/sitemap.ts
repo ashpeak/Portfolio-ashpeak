@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  let blogRoutes: any[] = [];
+  let blogRoutes: MetadataRoute.Sitemap = [];
   try {
     await connectToDatabase();
     const posts = await Post.find({ published: true }).lean();

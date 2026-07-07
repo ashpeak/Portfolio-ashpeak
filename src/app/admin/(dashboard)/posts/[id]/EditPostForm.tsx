@@ -5,7 +5,7 @@ import { updatePost } from '../../../actions';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function EditPostForm({ post }: { post: any }) {
+export default function EditPostForm({ post }: { post: { _id: string, title: string, slug: string, content: string, published: boolean } }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
