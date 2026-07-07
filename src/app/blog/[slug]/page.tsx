@@ -24,7 +24,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-white/30 selection:text-white">
+    <div className="min-h-screen selection:bg-white/30 selection:text-white">
       <main className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
         <Link 
           href="/blog" 
