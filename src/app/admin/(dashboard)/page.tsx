@@ -1,6 +1,7 @@
-import { getPosts, deletePost } from '../actions';
+import { getPosts } from '../actions';
 import Link from 'next/link';
-import { Pencil, Trash2, ExternalLink } from 'lucide-react';
+import { Pencil, ExternalLink } from 'lucide-react';
+import { DeleteButton } from './DeleteButton';
 
 export default async function AdminDashboard() {
   const posts = await getPosts();
@@ -61,14 +62,7 @@ export default async function AdminDashboard() {
                     <Link href={`/admin/posts/${post._id}`} className="text-zinc-400 hover:text-white transition-colors">
                       <Pencil size={18} />
                     </Link>
-                    <form action={async () => {
-                      'use server';
-                      await deletePost(post._id);
-                    }}>
-                      <button type="submit" className="text-red-400 hover:text-red-300 transition-colors">
-                        <Trash2 size={18} />
-                      </button>
-                    </form>
+                    <DeleteButton id={post._id} />
                   </td>
                 </tr>
               ))}
