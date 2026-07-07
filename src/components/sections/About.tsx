@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
+import Image from 'next/image'
 import { SectionLabel } from '../ui/SectionLabel'
 import { SectionTitle } from '../ui/SectionTitle'
 import { BentoCard } from '../ui/BentoCard'
@@ -86,10 +87,11 @@ export default function About() {
         <motion.div variants={bentoItem} className="md:col-span-2">
           <BentoCard className="h-full flex flex-col md:flex-row items-center md:items-start gap-6 relative p-8">
             <div className="w-24 h-24 rounded-full border-2 border-[var(--accent)] shrink-0 overflow-hidden bg-white/5 relative">
-              <img
-                src="ashish.jpg"
+              <Image
+                src="/ashish.jpg"
                 alt="Profile"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="flex-1 text-center md:text-left">

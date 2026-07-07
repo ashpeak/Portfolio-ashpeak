@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import Image from 'next/image'
 import { skills, skillCategories } from '@/lib/data/skills'
 
 export default function Skills() {
@@ -173,13 +174,14 @@ export default function Skills() {
                   cursor: 'default',
                 }}
               >
-                <img
+                <Image
                   src={`https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${skill.icon}.svg`}
                   alt={skill.name}
                   width={32}
                   height={32}
-                  style={{ filter: 'invert(1) brightness(0.7)', width: '32px', height: '32px' }}
+                  style={{ filter: 'invert(1) brightness(0.7)' }}
                   onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  unoptimized
                 />
                 <span style={{ fontSize: '11px', fontFamily: 'monospace', color: '#555', textAlign: 'center', padding: '0 4px' }}>
                   {skill.name}

@@ -7,6 +7,7 @@ import { Chip } from '@/components/ui/Chip'
 import { Button } from '@/components/ui/Button'
 import { ArrowLeft, ArrowRight, ExternalLink, X, ZoomIn } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -140,10 +141,12 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
                 className={`absolute inset-0 w-full h-full cursor-zoom-in transition-opacity duration-700 ${index === activeImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
                 onClick={() => setIsLightboxOpen(true)}
               >
-                <img 
+                <Image
                   src={img} 
                   alt={`${project.name} screenshot ${index + 1}`} 
-                  className="w-full h-full object-contain" 
+                  fill
+                  className="object-contain" 
+                  unoptimized
                 />
                 <div className="absolute top-4 right-4 z-20 bg-black/40 backdrop-blur-md border border-white/10 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                   <ZoomIn size={16} />
@@ -332,10 +335,12 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
               className="relative max-w-5xl max-h-[80vh] w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img 
+              <Image 
                 src={project.images[activeImageIndex]} 
                 alt={`${project.name} screenshot detail ${activeImageIndex + 1}`}
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                fill
+                className="object-contain rounded-lg shadow-2xl"
+                unoptimized
               />
             </motion.div>
             
