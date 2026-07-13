@@ -127,7 +127,7 @@ export default function About() {
                   <Code2 size={18} className="text-[var(--accent)]" />
                 </div>
                 <div className="text-3xl md:text-4xl font-display font-bold text-white">
-                  <CountUp end={3} suffix="+" />
+                  <CountUp end={4} suffix="+" />
                 </div>
                 <p className="text-white/40 text-sm font-mono mt-1">Years Coding</p>
               </div>
@@ -136,7 +136,7 @@ export default function About() {
                   <GitBranch size={18} className="text-[var(--accent)]" />
                 </div>
                 <div className="text-3xl md:text-4xl font-display font-bold text-white">
-                  <CountUp end={20} suffix="+" />
+                  <CountUp end={30} suffix="+" />
                 </div>
                 <p className="text-white/40 text-sm font-mono mt-1">Projects Built</p>
               </div>
@@ -154,7 +154,7 @@ export default function About() {
                   <span className="text-[var(--accent)] text-lg">⚡</span>
                 </div>
                 <div className="text-3xl md:text-4xl font-display font-bold text-white">
-                  <CountUp end={500} suffix="+" />
+                  <CountUp end={1500} suffix="+" />
                 </div>
                 <p className="text-white/40 text-sm font-mono mt-1">Commits</p>
               </div>
@@ -167,8 +167,8 @@ export default function About() {
           <BentoCard className="h-full p-8 flex flex-col justify-center overflow-hidden">
             <h4 className="font-display font-bold text-lg mb-4">GitHub Activity</h4>
             <div className="w-full flex justify-center text-sm">
-              <GitHubCalendar 
-                username="ashpeak" 
+              <GitHubCalendar
+                username="ashpeak"
                 colorScheme="dark"
                 theme={{
                   dark: ['#161b22', '#324005', '#5a7309', '#8aa815', '#c8ff00']
@@ -190,10 +190,10 @@ export default function About() {
           <BentoCard className="h-full flex flex-col justify-between p-8">
             <div>
               <h4 className="font-display font-bold text-lg mb-1">Currently Building</h4>
-              <a 
-                href="https://shattermoon.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://shattermoon.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[var(--accent)] text-sm mb-4 font-mono hover:underline inline-block"
               >
                 shattermoon.com

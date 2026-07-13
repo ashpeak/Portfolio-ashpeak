@@ -27,7 +27,7 @@ export const skills = [
   // Tools
   { name: 'Drizzle ORM',category: 'Tools',     icon: 'drizzle',       colorBlend: '#f6d365, #d4fc79, #96e6a1' }, // Yellow -> Lime -> Green
   { name: 'Prisma',     category: 'Tools',     icon: 'prisma',        colorBlend: '#38f9d7, #4facfe, #8e2de2' }, // Teal -> Blue -> Violet
-  { name: 'Zustand',    category: 'Tools',     icon: 'zustand',       colorBlend: '#f6d365, #fda085, #ff0844' }, // Yellow -> Orange -> Red
+  { name: 'Zustand',    category: 'Tools',     icon: '/icons/zustand.svg',       colorBlend: '#f6d365, #fda085, #ff0844' }, // Yellow -> Orange -> Red
   { name: 'Socket.io',  category: 'Tools',     icon: 'socketdotio',   colorBlend: '#e0e0e0, #8e2de2, #fa71cd' }, // Silver -> Violet -> Pink
   { name: 'Vertex AI',  category: 'Tools',     icon: 'googlecloud',   colorBlend: '#4facfe, #8e2de2, #f093fb' }, // Blue -> Violet -> Pink
   { name: 'Gemini',     category: 'Tools',     icon: 'googlegemini',  colorBlend: '#a18cd1, #fa71cd, #00f2fe' }, // Violet -> Pink -> Cyan
