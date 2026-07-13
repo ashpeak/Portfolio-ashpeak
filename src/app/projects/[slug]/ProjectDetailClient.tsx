@@ -27,6 +27,37 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null)
+  const [touchEndX, setTouchEndX] = useState<number | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
+
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(false)
+    setTouchEndX(null)
+    setTouchStartX(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX && Math.abs(e.targetTouches[0].clientX - touchStartX) > 10) {
+      setIsDragging(true)
+    }
+    setTouchEndX(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return
+    const distance = touchStartX - touchEndX
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      setActiveImageIndex(prev => (prev + 1) % project.images.length)
+    } else if (isRightSwipe) {
+      setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1)
+    }
+  }
+
   useEffect(() => {
     if (isLightboxOpen) {
       document.body.style.overflow = 'hidden'
@@ -134,12 +165,21 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
             animate={{ opacity: 1, scale: 1 }} 
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative mb-12 rounded-2xl overflow-hidden border border-[var(--border)] aspect-video bg-[var(--bg-surface)] group"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {project.images.map((img, index) => (
               <div 
                 key={index}
                 className={`absolute inset-0 w-full h-full cursor-zoom-in transition-opacity duration-700 ${index === activeImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
-                onClick={() => setIsLightboxOpen(true)}
+                onClick={(e) => {
+                  if (isDragging) {
+                    e.preventDefault();
+                    return;
+                  }
+                  setIsLightboxOpen(true);
+                }}
               >
                 <Image
                   src={img} 
@@ -157,15 +197,21 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
             {project.images.length > 1 && (
               <>
                 <button 
-                  onClick={() => setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1)}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1);
+                  }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-black/80"
                   aria-label="Previous image"
                 >
                   <ArrowLeft size={16} />
                 </button>
                 <button 
-                  onClick={() => setActiveImageIndex(prev => (prev + 1) % project.images.length)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(prev => (prev + 1) % project.images.length);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-black/80"
                   aria-label="Next image"
                 >
                   <ArrowRight size={16} />
@@ -174,7 +220,10 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
                   {project.images.map((_, i) => (
                     <button 
                       key={i} 
-                      onClick={() => setActiveImageIndex(i)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveImageIndex(i);
+                      }}
                       aria-label={`Go to image ${i + 1}`}
                       className={`w-2 h-2 rounded-full transition-all ${i === activeImageIndex ? 'bg-[var(--accent)] w-6' : 'bg-white/50 hover:bg-white/80'}`}
                     />
@@ -289,7 +338,13 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-8"
-            onClick={() => setIsLightboxOpen(false)}
+            onClick={() => {
+              if (isDragging) return;
+              setIsLightboxOpen(false);
+            }}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {/* Close Button */}
             <button 
@@ -299,32 +354,6 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
             >
               <X size={24} />
             </button>
-
-            {/* Navigation Arrows */}
-            {project.images.length > 1 && (
-              <>
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1)
-                  }}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
-                  aria-label="Previous image"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setActiveImageIndex(prev => (prev + 1) % project.images.length)
-                  }}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
-                  aria-label="Next image"
-                >
-                  <ArrowRight size={20} />
-                </button>
-              </>
-            )}
 
             {/* Zoomed Image Container */}
             <motion.div 
@@ -344,9 +373,40 @@ export default function ProjectDetailClient({ project, prevProject, nextProject 
               />
             </motion.div>
             
-            {/* Image counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/50 border border-white/10 px-4 py-2 rounded-full text-sm font-mono text-white/80">
-              {activeImageIndex + 1} / {project.images.length}
+            {/* Bottom Controls Bar */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4" onClick={(e) => e.stopPropagation()}>
+              {/* Previous Image Button */}
+              {project.images.length > 1 && (
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(prev => prev === 0 ? project.images.length - 1 : prev - 1);
+                  }}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-colors md:absolute md:left-6 md:top-1/2 md:-translate-y-1/2 md:w-12 md:h-12"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeft size={18} className="md:w-5 md:h-5" />
+                </button>
+              )}
+
+              {/* Image counter */}
+              <div className="bg-black/50 border border-white/10 px-4 py-2 rounded-full text-sm font-mono text-white/80 whitespace-nowrap">
+                {activeImageIndex + 1} / {project.images.length}
+              </div>
+
+              {/* Next Image Button */}
+              {project.images.length > 1 && (
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(prev => (prev + 1) % project.images.length);
+                  }}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-colors md:absolute md:right-6 md:top-1/2 md:-translate-y-1/2 md:w-12 md:h-12"
+                  aria-label="Next image"
+                >
+                  <ArrowRight size={18} className="md:w-5 md:h-5" />
+                </button>
+              )}
             </div>
           </motion.div>
         )}

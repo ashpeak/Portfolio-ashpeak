@@ -38,7 +38,7 @@ export const experience = [
     role: 'Freelance Full-Stack Developer',
     company: 'CVTPL',
     type: 'NDA',
-    period: 'Jan 2026 — Present',
+    period: 'Jan 2026 — June 2026',
     bullets: [
       'Developed full-stack web applications and architectures.',
       'Specific project details and features are confidential under NDA.',

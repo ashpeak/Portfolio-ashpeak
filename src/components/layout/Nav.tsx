@@ -25,7 +25,7 @@ export default function Nav() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
-      
+
       const sections = links.map(link => {
         const id = link.href.split('#')[1]
         return id ? document.getElementById(id) : null
@@ -60,7 +60,7 @@ export default function Nav() {
       >
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/#home" className="font-display font-bold text-2xl tracking-tighter">
-            ak<span className="text-[var(--accent)]">.</span>
+            aks<span className="text-[var(--accent)]">.</span>
           </Link>
 
           {/* Desktop Nav */}
