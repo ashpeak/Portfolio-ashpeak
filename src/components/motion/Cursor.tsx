@@ -18,23 +18,28 @@ export default function Cursor() {
       setPosition({ x: e.clientX, y: e.clientY })
     }
 
-    const updateHoverState = () => {
-      const hoveredElements = document.querySelectorAll('a, button, input, textarea, [data-cursor-hover]')
-      hoveredElements.forEach(el => {
-        el.addEventListener('mouseenter', () => setIsHovering(true))
-        el.addEventListener('mouseleave', () => setIsHovering(false))
-      })
+    const onMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target && target.closest && target.closest('a, button, input, textarea, [data-cursor-hover]')) {
+        setIsHovering(true)
+      }
+    }
+
+    const onMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target && target.closest && target.closest('a, button, input, textarea, [data-cursor-hover]')) {
+        setIsHovering(false)
+      }
     }
 
     window.addEventListener('mousemove', onMouseMove)
-    updateHoverState()
-
-    const observer = new MutationObserver(updateHoverState)
-    observer.observe(document.body, { childList: true, subtree: true })
+    window.addEventListener('mouseover', onMouseOver)
+    window.addEventListener('mouseout', onMouseOut)
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove)
-      observer.disconnect()
+      window.removeEventListener('mouseover', onMouseOver)
+      window.removeEventListener('mouseout', onMouseOut)
     }
   }, [])
 
