@@ -1,18 +1,30 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { skills, skillCategories } from '@/lib/data/skills'
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [isMobile, setIsMobile] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const filtered = activeCategory === 'All'
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  let filtered = activeCategory === 'All'
     ? skills
     : skills.filter(s => s.category === activeCategory)
+
+  if (activeCategory === 'All' && isMobile) {
+    filtered = filtered.slice(0, 27)
+  }
 
   const handleEnter = (
     e: React.MouseEvent<HTMLDivElement>,

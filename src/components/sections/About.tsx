@@ -113,7 +113,7 @@ export default function About() {
         <motion.div variants={bentoItem}>
           <BentoCard className="h-full flex flex-col justify-center items-center text-center p-8 relative">
             <MapPin size={32} className="text-[var(--accent)] mb-4" />
-            <h4 className="font-display font-bold text-lg">Dadri, UP</h4>
+            <h4 className="font-display font-bold text-lg">Greater Noida, UP</h4>
             <p className="text-white/50">India</p>
           </BentoCard>
         </motion.div>

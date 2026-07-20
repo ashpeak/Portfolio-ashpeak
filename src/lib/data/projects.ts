@@ -125,7 +125,7 @@ export const projectsData: ProjectData[] = [
   {
     slug: 'blink-ai',
     name: 'Blink.ai',
-    tagline: 'AI-powered video creation using scripts, APIs, cloud editing',
+    tagline: 'AI-powered video creation using scripts, APIs, FFmpeg library, cloud services and more.',
     date: '2023',
     status: 'Completed',
     category: 'AI/ML',

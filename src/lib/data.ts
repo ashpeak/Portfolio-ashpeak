@@ -4,7 +4,7 @@ export const personalInfo = {
   handle: "ashpeak",
   title: "Full-Stack Developer",
   bio: "I build scalable web products end-to-end — from clean APIs to polished UIs. Based in India, obsessing over performance, DX, and the details that make software feel right.",
-  location: "Dadri, Uttar Pradesh, India",
+  location: "Greater Noida, Uttar Pradesh, India",
   email: "kumarvns130@gmail.com",
   github: "https://github.com/ashpeak",
   linkedin: "https://www.linkedin.com/in/ashpeak/",
@@ -80,7 +80,7 @@ export const projects = [
   {
     id: '2',
     name: 'Blink.ai',
-    desc: 'AI-powered video creation using scripts, APIs, cloud editing',
+    desc: 'AI-powered video creation using scripts, APIs, FFmpeg library, cloud services and more.',
     stack: ['React', 'Node.js', 'FFmpeg', 'Gemini AI'],
     live: 'https://blink-ai.vercel.app/',
     github: 'https://github.com/ashpeak/lizard-ai',

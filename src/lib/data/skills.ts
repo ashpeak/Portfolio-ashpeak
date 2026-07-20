@@ -2,7 +2,7 @@ export const skills = [
   // Languages
   { name: 'TypeScript', category: 'Languages', icon: 'typescript',    colorBlend: '#00f2fe, #4facfe, #8e2de2' }, // Cyan -> Blue -> Violet
   { name: 'JavaScript', category: 'Languages', icon: 'javascript',    colorBlend: '#f6d365, #fda085, #f00946' }, // Yellow -> Orange -> Red
-  { name: 'Java',       category: 'Languages', icon: 'openjdk',       colorBlend: '#ff0844, #ffb199, #8e2de2' }, // Dark Orange/Red -> Violet
+  { name: 'C++',        category: 'Languages', icon: 'cplusplus',     colorBlend: '#00599C, #4facfe, #8e2de2' }, // Blue -> Violet
 
   // Frontend
   { name: 'React',      category: 'Frontend',  icon: 'react',         colorBlend: '#4facfe, #8e2de2, #f093fb' }, // Cyan -> Violet -> Pink
@@ -36,6 +36,15 @@ export const skills = [
   { name: 'VS Code',      category: 'Tools',     icon: 'visualstudiocode', colorBlend: '#007acc, #4facfe, #8e2de2' },
   { name: 'Codex',        category: 'Tools',     icon: 'openai',        colorBlend: '#412991, #8e2de2, #00f2fe' },
   { name: 'AWS',          category: 'Tools',     icon: 'amazonaws',     colorBlend: '#ff9900, #f6d365, #fda085' },
+  { name: 'GCP',          category: 'Tools',     icon: 'googlecloud',   colorBlend: '#4facfe, #00f2fe, #f6d365' },
+  { name: 'Stripe',       category: 'Tools',     icon: 'stripe',        colorBlend: '#635BFF, #00D4FF, #8e2de2' },
+  { name: 'Easebuzz',     category: 'Tools',     icon: 'easebuzz',      colorBlend: '#f6d365, #fda085, #ff0844' },
+  { name: 'BullMQ',       category: 'Tools',     icon: 'redis',         colorBlend: '#ff0844, #ffb199, #f6d365' },
+  { name: 'Claude Code',  category: 'Tools',     icon: 'anthropic',     colorBlend: '#D18B49, #F6D365, #FDA085' },
+  { name: 'Antigravity',  category: 'Tools',     icon: 'rocket',        colorBlend: '#00f2fe, #4facfe, #8e2de2' },
+  { name: 'FastAPI',      category: 'Backend',   icon: 'fastapi',       colorBlend: '#009688, #4facfe, #00f2fe' },
+  { name: 'CI/CD',        category: 'Tools',     icon: 'githubactions', colorBlend: '#2088FF, #4facfe, #00f2fe' },
+  { name: 'Linux',        category: 'Tools',     icon: 'linux',         colorBlend: '#F5C400, #FDA085, #000000' },
 ]
 
 export const skillCategories = ['All', 'Languages', 'Frontend', 'Backend', 'Database', 'Tools']
