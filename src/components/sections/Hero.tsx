@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/Button'
 import { FadeUp } from '@/components/motion/FadeUp'
 import { MagneticWrap } from '@/components/motion/MagneticWrap'
 import { TextScramble } from '@/components/motion/TextScramble'
-import { FloatingParticles } from '@/components/motion/FloatingParticles'
+import dynamic from 'next/dynamic'
+const FloatingParticles = dynamic(() => import('@/components/motion/FloatingParticles').then(mod => mod.FloatingParticles), { ssr: false })
 import { Mail } from 'lucide-react'
 import Link from 'next/link'
 
